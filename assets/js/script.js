@@ -32,4 +32,13 @@ $(document).on("click","#yes", function(){
   $("#main-content").empty();
   var txt = $("#second").data("text");
   typeWriter(txt, 0, "second");
+  $("#yes").removeClass("show").addClass("hide");
+  $("#no").removeClass("show").addClass("hide");
+  $("#confirm").removeClass("hide").addClass("show");
+  $("#reset").removeClass("hide").addClass("show");
+  setTimeout(function(){$("span#second").append('<input type="text" id="fname" name="fname">');},1500);
+  setTimeout(function(){$(".pixel").removeClass("pixel")},1500);
 });
+
+
+
