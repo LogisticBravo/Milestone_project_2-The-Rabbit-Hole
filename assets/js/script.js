@@ -28,17 +28,39 @@ window.onload = setTimeout(function(){
   typeWriter(txt, 0, "main-content");
 },5000);
 
-$(document).on("click","#yes", function(){
-  $("#main-content").empty();
+var button = document.getElementById("yes"),
+  count = 0;
+button.onclick = function() {
+  count += 1;
+  if (count === 1){$("#main-content").empty();
   var txt = $("#second").data("text");
   typeWriter(txt, 0, "second");
   $("#yes").removeClass("show").addClass("hide");
   $("#no").removeClass("show").addClass("hide");
   $("#confirm").removeClass("hide").addClass("show");
   $("#reset").removeClass("hide").addClass("show");
-  setTimeout(function(){$("span#second").append('<input type="text" id="fname" name="fname">');},1500);
+  setTimeout(function(){$("span#second").append('<input type="text" id="name" name="name">');},1500);
   setTimeout(function(){$(".pixel").removeClass("pixel")},1500);
+  setTimeout(function(){$("#name").focus()},1600);}
+  if (count === 2){$("#yes").removeClass("show").addClass("hide")}
+  console.log(count);
+};
+
+let scrambled;
+
+$(document).on("click","#confirm",function(){
+    scrambled = document.getElementById("name").value;
+    $("#second").empty();
+  var txt = `${$("#konami").data("text")} ${scrambled}?`;
+  typeWriter(txt, 0, "konami");
+    $("#confirm").removeClass("show").addClass("hide");
+    $("#reset").removeClass("show").addClass("hide");
+    $("#yes").removeClass("hide").addClass("show");
+    $("#no").removeClass("hide").addClass("show");
 });
 
+//console.log(scrambled) - debug to check that name was passed to 'scrambled'
 
-
+$(document).on("click","#reset",function(){
+    $("#name").val('');
+});
