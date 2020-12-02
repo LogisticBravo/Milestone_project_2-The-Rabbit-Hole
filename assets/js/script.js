@@ -32,9 +32,10 @@ var button = document.getElementById("yes"),
   count = 0;
 button.onclick = function() {
   count += 1;
-  if (count === 1){$("#main-content").empty();
-  var txt = $("#second").data("text");
-  typeWriter(txt, 0, "second");
+  if (count === 1){
+  $("#main-content").empty();
+    var txt = $("#second").data("text");
+    typeWriter(txt, 0, "second");
   $("#yes").removeClass("show").addClass("hide");
   $("#no").removeClass("show").addClass("hide");
   $("#confirm").removeClass("hide").addClass("show");
@@ -42,16 +43,26 @@ button.onclick = function() {
   setTimeout(function(){$("span#second").append('<input type="text" id="name" name="name">');},1500);
   setTimeout(function(){$(".pixel").removeClass("pixel")},1500);
   setTimeout(function(){$("#name").focus()},1600);}
-  if (count === 2){$("#yes").removeClass("show").addClass("hide")}
+  if (count === 2){
+    $("#konami").empty();
+        var txt = $("#anagram").data("text");
+        typeWriter(txt, 0, "anagram");
+    $("#yes").removeClass("show").addClass("hide");
+    $("#no").removeClass("show").addClass("hide");
+    $("#confirm").removeClass("hide").addClass("show");
+    $("#reset").removeClass("hide").addClass("show");
+}
   console.log(count);
 };
 
+let yourName;
 let scrambled;
 
 $(document).on("click","#confirm",function(){
-    scrambled = document.getElementById("name").value;
+    yourName = document.getElementById("name").value;
+    scrambled = yourName.split(); //converts yourName to an Array so that it can be randomized later
     $("#second").empty();
-  var txt = `${$("#konami").data("text")} ${scrambled}?`;
+  var txt = `${$("#konami").data("text")} ${yourName}?`;
   typeWriter(txt, 0, "konami");
     $("#confirm").removeClass("show").addClass("hide");
     $("#reset").removeClass("show").addClass("hide");
@@ -64,3 +75,7 @@ $(document).on("click","#confirm",function(){
 $(document).on("click","#reset",function(){
     $("#name").val('');
 });
+
+function newFunction() {
+    return new scrambled.toString();
+}
