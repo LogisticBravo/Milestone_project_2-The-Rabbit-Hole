@@ -45,7 +45,7 @@ button.onclick = function() {
   setTimeout(function(){$("#name").focus()},1600);}
   if (count === 2){
     $("#konami").empty();
-        var txt = $("#anagram").data("text");
+        var txt = $("#anagram").data("text")+remove(scrambled);
         typeWriter(txt, 0, "anagram");
     $("#yes").removeClass("show").addClass("hide");
     $("#no").removeClass("show").addClass("hide");
@@ -55,12 +55,9 @@ button.onclick = function() {
   console.log(count);
 };
 
-let yourName;
-let scrambled;
-
 $(document).on("click","#confirm",function(){
     yourName = document.getElementById("name").value;
-    scrambled = yourName.split(); //converts yourName to an Array so that it can be randomized later
+    scrambled = yourName.split(""); //converts yourName to an Array so that it can be randomized later
     $("#second").empty();
   var txt = `${$("#konami").data("text")} ${yourName}?`;
   typeWriter(txt, 0, "konami");
@@ -76,6 +73,10 @@ $(document).on("click","#reset",function(){
     $("#name").val('');
 });
 
-function newFunction() {
-    return new scrambled.toString();
+function remove(scrambled){ //function removes any blank spaces that may be present and injects the elelemts 2,0,2,0 into array. The full array will later be shuffled and returned as  string. 
+index = scrambled.indexOf(" ");
+if(index > -1){scrambled.splice(index,1);
+scrambled.push("2","0","2","0");
 }
+return scrambled;
+};
