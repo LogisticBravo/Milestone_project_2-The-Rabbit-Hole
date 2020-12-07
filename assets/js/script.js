@@ -77,6 +77,12 @@ function remove(scrambled){ //function removes any blank spaces that may be pres
 index = scrambled.indexOf(" ");
 if(index > -1){scrambled.splice(index,1);
 scrambled.push("2","0","2","0");
+  for (let i = scrambled.length - 1; i > 0; i--) { //'for' loop taken from "Fischer-Yates" algorithm from https://javascript.info/task/shuffle
+    let j = Math.floor(Math.random() * (i + 1)); 
+    [scrambled[i], scrambled[j]] = [scrambled[j], scrambled[i]]; //end Fischer-Yates algorithm
+    shuffled = scrambled.toString();
+    shuffledName = shuffled.split(",").join("");
+  }
 }
-return scrambled;
+return shuffledName;
 };
