@@ -12,7 +12,6 @@
 *  }
 * }
 */
-
 function typeWriter(txt, i, divId) {
   if (i < (txt.length)) {
     $('#' + divId).html(txt.substring(0, i+1));
@@ -47,6 +46,19 @@ button.onclick = function() {
     $("#konami").empty();
         var txt = $("#anagram").data("text")+remove(scrambled);
         typeWriter(txt, 0, "anagram");
+    setTimeout(function(){
+        $("span#anagram").css("display","block").after('<span id="solve" data-text="Answer: "></span>')
+},3800);
+    setTimeout(function(){
+  var txt = $("#solve").data("text");
+  typeWriter(txt, 0, "solve");
+},4000);
+    setTimeout(function(){
+        $(".pixel").removeClass("pixel")
+},5800);
+setTimeout(function(){
+        $("span#solve").after('<input type="text" id="answer" name="answer">');$("#answer").focus();
+},5700);
     $("#yes").removeClass("show").addClass("hide");
     $("#no").removeClass("show").addClass("hide");
     $("#confirm").removeClass("hide").addClass("show");
@@ -59,6 +71,7 @@ $(document).on("click","#confirm",function(){
     yourName = document.getElementById("name").value;
     scrambled = yourName.split(""); //converts yourName to an Array so that it can be randomized later
     $("#second").empty();
+    $("span").last().addClass("pixel");
   var txt = `${$("#konami").data("text")} ${yourName}?`;
   typeWriter(txt, 0, "konami");
     $("#confirm").removeClass("show").addClass("hide");
