@@ -100,11 +100,12 @@ window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-
     }
 }
 
-
+var resetButton = document.getElementById("reset")
+resetButton.onclick = function () {
+        $("#name").val('');
+        $("#answer").val('');
+    } 
 //console.log(scrambled) - debug to check that name was passed to 'scrambled'
-$(document).on("click", "#reset", function () {
-    $("#name").val('');
-});
 
 function remove(scrambled) { //function removes any blank spaces that may be present and injects the elelemts 2,0,2,0 into array. The full array will later be shuffled and returned as  string. 
     index = scrambled.indexOf(" ");
