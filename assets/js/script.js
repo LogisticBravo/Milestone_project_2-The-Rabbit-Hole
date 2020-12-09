@@ -68,6 +68,39 @@ button.onclick = function () {
     }
     console.log(count);
 };
+
+var noButton = document.getElementById("no"),
+    noCount = 0;
+noButton.onclick = function () {
+    noCount += 1;
+    if (noCount === 1 && count === 0) {
+window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-Rabbit-Hole";
+    }
+    else if (noCount === 1){
+        $("#konami").empty();
+        $("#yes").removeClass("show").addClass("hide");
+        $("#no").removeClass("show").addClass("hide");
+        $("#confirm").removeClass("hide").addClass("show");
+        $("#reset").removeClass("hide").addClass("show");
+        var txt = `${$("#riddle-1").data("text")}`;
+        typeWriter(txt, 0, "riddle-1");
+        setTimeout(function () {
+            $("span#riddle-1").css("display", "block").after('<span id="solve" data-text="Answer: "></span>')
+        }, 3800);
+        setTimeout(function () {
+            var txt = $("#solve").data("text");
+            typeWriter(txt, 0, "solve");
+        }, 4000);
+        setTimeout(function () {
+            $(".pixel").removeClass("pixel")
+        }, 5800);
+        setTimeout(function () {
+            $("span#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
+        }, 5700);
+    }
+}
+
+
 //console.log(scrambled) - debug to check that name was passed to 'scrambled'
 $(document).on("click", "#reset", function () {
     $("#name").val('');
@@ -105,7 +138,7 @@ confirmButton.onclick = function () {
         $("#yes").removeClass("hide").addClass("show");
         $("#no").removeClass("hide").addClass("show");
     }
-    if (confirmCount >= 2 && confirmCount <= 5) {
+    if (confirmCount >= 2 && confirmCount <= 5 && count === 2) {
         answer = document.getElementById("answer").value;
         if (answer == yourName.concat("2020") && attempt >= 0) {
             alert("Correct");
@@ -114,7 +147,7 @@ confirmButton.onclick = function () {
             $("#answer").remove();
             $("span").last().addClass("pixel");
             var txt = $("#code-input").data("text");
-        typeWriter(txt, 0, "code-input");
+            typeWriter(txt, 0, "code-input");
         }
         else if (attempt == 1) {
             attempt--;
