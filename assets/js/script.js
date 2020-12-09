@@ -22,6 +22,12 @@ function typeWriter(txt, i, divId) {
     };
 };
 
+function showHide(show, showTwo, hide, hideTwo){
+        $("#" + show).removeClass("hide").addClass("show");
+        $("#" + showTwo).removeClass("hide").addClass("show");
+        $("#" + hide).removeClass("show").addClass("hide");
+        $("#" + hideTwo).removeClass("show").addClass("hide");}
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
@@ -35,10 +41,7 @@ button.onclick = function () {
         $("#main-content").empty();
         var txt = $("#second").data("text");
         typeWriter(txt, 0, "second");
-        $("#yes").removeClass("show").addClass("hide");
-        $("#no").removeClass("show").addClass("hide");
-        $("#confirm").removeClass("hide").addClass("show");
-        $("#reset").removeClass("hide").addClass("show");
+        showHide("confirm","reset","yes","no");
         setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);
         setTimeout(function () { $(".pixel").removeClass("pixel") }, 1500);
         setTimeout(function () { $("#name").focus() }, 1600);
@@ -61,13 +64,12 @@ button.onclick = function () {
         setTimeout(function () {
             $("span#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
         }, 5700);
-        $("#yes").removeClass("show").addClass("hide");
-        $("#no").removeClass("show").addClass("hide");
-        $("#confirm").removeClass("hide").addClass("show");
-        $("#reset").removeClass("hide").addClass("show");
+        showHide("confirm","reset","yes","no");
     }
     console.log(count);
 };
+
+
 
 var noButton = document.getElementById("no"),
     noCount = 0;
@@ -78,10 +80,7 @@ window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-
     }
     else if (noCount === 1){
         $("#konami").empty();
-        $("#yes").removeClass("show").addClass("hide");
-        $("#no").removeClass("show").addClass("hide");
-        $("#confirm").removeClass("hide").addClass("show");
-        $("#reset").removeClass("hide").addClass("show");
+        showHide("confirm","reset","yes","no");
         var txt = `${$("#riddle-1").data("text")}`;
         typeWriter(txt, 0, "riddle-1");
         setTimeout(function () {
@@ -134,10 +133,7 @@ confirmButton.onclick = function () {
         $("span").last().addClass("pixel");
         var txt = `${$("#konami").data("text")} ${yourName}?`;
         typeWriter(txt, 0, "konami");
-        $("#confirm").removeClass("show").addClass("hide");
-        $("#reset").removeClass("show").addClass("hide");
-        $("#yes").removeClass("hide").addClass("show");
-        $("#no").removeClass("hide").addClass("show");
+        showHide("yes","no","confirm","reset")
     }
     if (confirmCount >= 2 && confirmCount <= 5 && count === 2) {
         answer = document.getElementById("answer").value;
@@ -162,6 +158,7 @@ confirmButton.onclick = function () {
             attempt--;
             alert(`You have ${attempt} remaining attempts`)
         }
+        
         console.log(attempt)
     }
 }
