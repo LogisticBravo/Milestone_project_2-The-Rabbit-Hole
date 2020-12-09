@@ -1,8 +1,3 @@
-/* *** FOR DEBUG ON CLICK ***
-* var clicked = false
-* document.getElementById("yes").addEventListener("click",function(){clicked = true});
-*/
-
 /* *** ORIGINAL TYPEWRITER CODE FROM W3 SCHOOLS - BASE FOR TYPEWRITE CODE ***
 *   function typeWriter() {
 *        if (i < txt.length) {
@@ -11,7 +6,7 @@
 *       setTimeout(typeWriter, 70);
 *  }
 * }
-*/
+* * * * * * *  * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * */
 function typeWriter(txt, i, divId) {
     if (i < (txt.length)) {
         $('#' + divId).html(txt.substring(0, i + 1));
@@ -21,6 +16,11 @@ function typeWriter(txt, i, divId) {
         }, 70);
     };
 };
+
+function quickType(spanId,optionalVariable ='',optionalValue = ''){
+        var txt = $("#" + spanId).data("text") + optionalVariable + optionalValue;
+        typeWriter(txt, 0, spanId);
+    }
 
 function showHide(show, showTwo, hide, hideTwo){
         $("#" + show).removeClass("hide").addClass("show");
@@ -39,24 +39,21 @@ button.onclick = function () {
     count += 1;
     if (count === 1) {
         $("#main-content").empty();
-        var txt = $("#second").data("text");
-        typeWriter(txt, 0, "second");
+        quickType("second");
         showHide("confirm","reset","yes","no");
-        setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);
+        setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);//
         setTimeout(function () { $(".pixel").removeClass("pixel") }, 1500);
         setTimeout(function () { $("#name").focus() }, 1600);
     }
     if (count === 2) {
         $("#konami").empty();
         var yourNameShuffled = remove(scrambled)
-        var txt = $("#anagram").data("text") + yourNameShuffled;
-        typeWriter(txt, 0, "anagram");
+        quickType("anagram",yourNameShuffled);
         setTimeout(function () {
             $("span#anagram").css("display", "block").after('<span id="solve" data-text="Answer: "></span>')
         }, 3800);
         setTimeout(function () {
-            var txt = $("#solve").data("text");
-            typeWriter(txt, 0, "solve");
+            quickType("solve");
         }, 4000);
         setTimeout(function () {
             $(".pixel").removeClass("pixel")
@@ -69,8 +66,6 @@ button.onclick = function () {
     console.log(count);
 };
 
-
-
 var noButton = document.getElementById("no"),
     noCount = 0;
 noButton.onclick = function () {
@@ -81,14 +76,12 @@ window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-
     else if (noCount === 1){
         $("#konami").empty();
         showHide("confirm","reset","yes","no");
-        var txt = `${$("#riddle-1").data("text")}`;
-        typeWriter(txt, 0, "riddle-1");
+        quickType("riddle-1");
         setTimeout(function () {
             $("span#riddle-1").css("display", "block").after('<span id="solve" data-text="Answer: "></span>')
         }, 3800);
         setTimeout(function () {
-            var txt = $("#solve").data("text");
-            typeWriter(txt, 0, "solve");
+            quickType("solve")
         }, 4000);
         setTimeout(function () {
             $(".pixel").removeClass("pixel")
@@ -123,17 +116,19 @@ function remove(scrambled) { //function removes any blank spaces that may be pre
 
 var confirmButton = document.getElementById("confirm");
 confirmCount = 0;
+riddleCount = 0;
 attempt = 3;
 confirmButton.onclick = function () {
     confirmCount += 1;
+    riddleCount +=1;
     if (confirmCount === 1) {
         yourName = document.getElementById("name").value;
         scrambled = yourName.split(""); //converts yourName to an Array so that it can be randomized later
         $("#second").empty();
         $("span").last().addClass("pixel");
-        var txt = `${$("#konami").data("text")} ${yourName}?`;
-        typeWriter(txt, 0, "konami");
-        showHide("yes","no","confirm","reset")
+        quickType("konami",yourName,"?");
+        showHide("yes","no","confirm","reset");
+        riddleCount = 0;
     }
     if (confirmCount >= 2 && confirmCount <= 5 && count === 2) {
         answer = document.getElementById("answer").value;
@@ -143,12 +138,13 @@ confirmButton.onclick = function () {
             $("#solve").empty();
             $("#answer").remove();
             $("span").last().addClass("pixel");
-            var txt = $("#code-input").data("text");
-            typeWriter(txt, 0, "code-input");
+            quickType("code-input")
+            riddleCount = 0;
         }
         else if (attempt == 1) {
             attempt--;
-            alert("This is your final attempt")
+            alert("This is your final attempt");
+            riddleCount = 0;
         }
         else if (attempt == 0) {
             alert("Too many Incorrect attempts! You will start again!")
@@ -156,9 +152,14 @@ confirmButton.onclick = function () {
         }
         else {
             attempt--;
-            alert(`You have ${attempt} remaining attempts`)
+            alert(`You have ${attempt} remaining attempts`);
+            riddleCount = 0;
         }
         
         console.log(attempt)
+    }
+    if (riddleCount === 1){
+        answer = document.getElementById("answer").value;
+        if(answer = "up"){alert("It works!!")}
     }
 }
