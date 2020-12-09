@@ -105,17 +105,24 @@ confirmButton.onclick = function () {
         $("#yes").removeClass("hide").addClass("show");
         $("#no").removeClass("hide").addClass("show");
     }
-    if (confirmCount >= 2 && confirmCount <= 6) {
+    if (confirmCount >= 2 && confirmCount <= 5) {
         answer = document.getElementById("answer").value;
-        if (answer == yourName.concat("2020") && attempt > 0) {
+        if (answer == yourName.concat("2020") && attempt >= 0) {
             alert("Correct");
+            $("#anagram").empty();
+            $("#solve").empty();
+            $("#answer").remove();
+            $("span").last().addClass("pixel");
+            var txt = $("#code-input").data("text");
+        typeWriter(txt, 0, "code-input");
         }
         else if (attempt == 1) {
             attempt--;
             alert("This is your final attempt")
         }
         else if (attempt == 0) {
-            alert("0 attempts remaining - auto refresh to beginning")
+            alert("Too many Incorrect attempts! You will start again!")
+            window.location.href = "https://8000-b0bfd19b-42b8-476c-bb80-c849c316f359.ws-eu03.gitpod.io/";
         }
         else {
             attempt--;
