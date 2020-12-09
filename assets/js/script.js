@@ -108,19 +108,19 @@ resetButton.onclick = function () {
 //console.log(scrambled) - debug to check that name was passed to 'scrambled'
 
 function remove(scrambled) { //function removes any blank spaces that may be present and injects the elelemts 2,0,2,0 into array. The full array will later be shuffled and returned as  string. 
-    index = scrambled.indexOf(" ");
-    if (index > -1) {
+    if (index = scrambled.indexOf(" "), index > -1){
         scrambled.splice(index, 1);
-        scrambled.push("2", "0", "2", "0");
+        scrambled.push("2", "0", "2", "0");}
+    else if (index = scrambled){
+        scrambled.push("2", "0", "2", "0");}
         for (let i = scrambled.length - 1; i > 0; i--) { //'for' loop taken from "Fischer-Yates" algorithm from https://javascript.info/task/shuffle
             let j = Math.floor(Math.random() * (i + 1));
             [scrambled[i], scrambled[j]] = [scrambled[j], scrambled[i]]; //end Fischer-Yates algorithm
             shuffled = scrambled.toString();
             shuffledName = shuffled.split(",").join("");
         }
-    }
     return shuffledName;
-}
+};
 
 var confirmButton = document.getElementById("confirm");
 confirmCount = 0;
