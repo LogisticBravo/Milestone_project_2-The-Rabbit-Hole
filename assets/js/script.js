@@ -45,12 +45,27 @@ function remove(scrambled) { //function removes any blank spaces that may be pre
 
 function changeId(){if (count === 1 && noCount === 1 && confirmCount === 1){
         $("button#confirm").attr("id","confirmRiddle");
+        riddleButton = document.getElementById("confirmRiddle");
     }}
 
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
+    counts();
 }, 5000);
+
+let riddlesAns ={
+    riddle1: "up",
+    riddle2: "up",
+    riddle3: "down",
+    riddle4: "down",
+    riddle5: "left",
+    riddle6: "right",
+    riddle7: "left",
+    riddle8: "right",
+    riddle9: "a",
+    riddle10: "b",
+}
 
 var button = document.getElementById("yes");
 button.onclick = function () {
@@ -84,6 +99,14 @@ button.onclick = function () {
     console.log(count);
 };
 
+function counts(){
+    confirmCount = 0;
+    riddleCount = 0;
+    noCount = 0;
+    count = 0;
+    attempt = 3;
+};
+
 var noButton = document.getElementById("no");
 noButton.onclick = function () {
     noCount += 1;
@@ -107,6 +130,8 @@ window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-
         setTimeout(function () {
             $("span#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
         }, 5700);
+        riddleButton.onclick = function (){
+    riddles();};
     }
 }
 
@@ -152,12 +177,10 @@ confirmButton.onclick = function () {
         }
         console.log(attempt)
     }
-}
-
-window.onload = function counts(){
-    confirmCount = 0;
-    riddleCount = 0;
-    noCount = 0;
-    count = 0;
-    attempt = 3;
 };
+
+function riddles(){riddleCount += 1;
+    answer = document.getElementById("answer").value;
+if (answer = riddlesAns.riddle1 && riddleCount == 1){
+    alert("It works!")
+}}
