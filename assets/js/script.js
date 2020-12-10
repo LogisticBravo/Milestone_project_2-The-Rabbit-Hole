@@ -28,13 +28,31 @@ function showHide(show, showTwo, hide, hideTwo){
         $("#" + hide).removeClass("show").addClass("hide");
         $("#" + hideTwo).removeClass("show").addClass("hide");}
 
+function remove(scrambled) { //function removes any blank spaces that may be present and injects the elelemts 2,0,2,0 into array. The full array will later be shuffled and returned as  string. 
+    if (index = scrambled.indexOf(" "), index > -1){
+        scrambled.splice(index, 1);
+        scrambled.push("2", "0", "2", "0");}
+    else if (index = scrambled){
+        scrambled.push("2", "0", "2", "0");}
+        for (let i = scrambled.length - 1; i > 0; i--) { //'for' loop taken from "Fischer-Yates" algorithm from https://javascript.info/task/shuffle
+            let j = Math.floor(Math.random() * (i + 1));
+            [scrambled[i], scrambled[j]] = [scrambled[j], scrambled[i]]; //end Fischer-Yates algorithm
+            shuffled = scrambled.toString();
+            shuffledName = shuffled.split(",").join("");
+        }
+    return shuffledName;
+};
+
+function changeId(){if (count === 1 && noCount === 1 && confirmCount === 1){
+        $("button#confirm").attr("id","confirmRiddle");
+    }}
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
 }, 5000);
 
-var button = document.getElementById("yes"),
-    count = 0;
+var button = document.getElementById("yes");
 button.onclick = function () {
     count += 1;
     if (count === 1) {
@@ -66,8 +84,7 @@ button.onclick = function () {
     console.log(count);
 };
 
-var noButton = document.getElementById("no"),
-    noCount = 0;
+var noButton = document.getElementById("no");
 noButton.onclick = function () {
     noCount += 1;
     if (noCount === 1 && count === 0) {
@@ -77,6 +94,7 @@ window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-
         $("#konami").empty();
         showHide("confirm","reset","yes","no");
         quickType("riddle-1");
+        changeId();
         setTimeout(function () {
             $("span#riddle-1").css("display", "block").after('<span id="solve" data-text="Answer: "></span>')
         }, 3800);
@@ -99,28 +117,9 @@ resetButton.onclick = function () {
     } 
 //console.log(scrambled) - debug to check that name was passed to 'scrambled'
 
-function remove(scrambled) { //function removes any blank spaces that may be present and injects the elelemts 2,0,2,0 into array. The full array will later be shuffled and returned as  string. 
-    if (index = scrambled.indexOf(" "), index > -1){
-        scrambled.splice(index, 1);
-        scrambled.push("2", "0", "2", "0");}
-    else if (index = scrambled){
-        scrambled.push("2", "0", "2", "0");}
-        for (let i = scrambled.length - 1; i > 0; i--) { //'for' loop taken from "Fischer-Yates" algorithm from https://javascript.info/task/shuffle
-            let j = Math.floor(Math.random() * (i + 1));
-            [scrambled[i], scrambled[j]] = [scrambled[j], scrambled[i]]; //end Fischer-Yates algorithm
-            shuffled = scrambled.toString();
-            shuffledName = shuffled.split(",").join("");
-        }
-    return shuffledName;
-};
-
 var confirmButton = document.getElementById("confirm");
-confirmCount = 0;
-riddleCount = 0;
-attempt = 3;
 confirmButton.onclick = function () {
     confirmCount += 1;
-    riddleCount +=1;
     if (confirmCount === 1) {
         yourName = document.getElementById("name").value;
         scrambled = yourName.split(""); //converts yourName to an Array so that it can be randomized later
@@ -128,7 +127,6 @@ confirmButton.onclick = function () {
         $("span").last().addClass("pixel");
         quickType("konami",yourName,"?");
         showHide("yes","no","confirm","reset");
-        riddleCount = 0;
     }
     if (confirmCount >= 2 && confirmCount <= 5 && count === 2) {
         answer = document.getElementById("answer").value;
@@ -139,12 +137,10 @@ confirmButton.onclick = function () {
             $("#answer").remove();
             $("span").last().addClass("pixel");
             quickType("code-input")
-            riddleCount = 0;
         }
         else if (attempt == 1) {
             attempt--;
             alert("This is your final attempt");
-            riddleCount = 0;
         }
         else if (attempt == 0) {
             alert("Too many Incorrect attempts! You will start again!")
@@ -153,13 +149,15 @@ confirmButton.onclick = function () {
         else {
             attempt--;
             alert(`You have ${attempt} remaining attempts`);
-            riddleCount = 0;
         }
-        
         console.log(attempt)
     }
-    if (riddleCount === 1){
-        answer = document.getElementById("answer").value;
-        if(answer = "up"){alert("It works!!")}
-    }
 }
+
+window.onload = function counts(){
+    confirmCount = 0;
+    riddleCount = 0;
+    noCount = 0;
+    count = 0;
+    attempt = 3;
+};
