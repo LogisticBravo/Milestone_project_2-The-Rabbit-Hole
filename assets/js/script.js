@@ -62,6 +62,29 @@ function attempts(){
             alert(`You have ${attempt} remaining attempts`);
         }}
 
+function answerRiddle(riddleId){
+    $("span").last().addClass("pixel");
+    quickType("pass")
+    setTimeout(function () {
+            $("span#pass").css("display", "block")
+        }, 3800);
+    setTimeout(function () {
+            quickType(riddleId)
+        }, 3900);
+    setTimeout(function () {
+            $("span#" + riddleId).css("display", "block")
+        }, 7600);
+    setTimeout(function () {
+            quickType("solve")
+        }, 8200);
+    setTimeout(function () {
+            $(".pixel").removeClass("pixel")
+        }, 9600);
+    setTimeout(function () {
+            $("#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
+        }, 9500);
+}
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
@@ -88,7 +111,7 @@ button.onclick = function () {
         $("#main-content").empty();
         quickType("second");
         showHide("confirm","reset","yes","no");
-        setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);//
+        setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);
         setTimeout(function () { $(".pixel").removeClass("pixel") }, 1500);
         setTimeout(function () { $("#name").focus() }, 1600);
     }
@@ -182,27 +205,14 @@ confirmButton.onclick = function () {
     }
 };
 
-function riddles(){riddleCount += 1;
+function riddles(){
+    riddleCount += 1;
     answer = document.getElementById("answer").value;
 if (answer == riddlesAns.riddle1){
     $("#riddle-1").empty();
     $("#solve").empty();
     $("#answer").remove();
-    $("span").last().addClass("pixel");
-    quickType("pass")
-    setTimeout(function () {
-            $("span#pass").css("display", "block")//Perhaps I should make this a display block class and use add class
-        }, 3800);
-    setTimeout(function () {
-            quickType("solve")
-        }, 4000);
-     setTimeout(function () {
-            $(".pixel").removeClass("pixel")
-        }, 5800);
-    setTimeout(function () {
-            $("#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
-        }, 5700);
+    answerRiddle("riddle-2");
 }
 else {attempts()};
 }
-
