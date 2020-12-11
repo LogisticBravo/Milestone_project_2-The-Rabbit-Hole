@@ -48,6 +48,20 @@ function changeId(){if (count === 1 && noCount === 1 && confirmCount === 1){
         riddleButton = document.getElementById("confirmRiddle");
     }}
 
+function attempts(){
+        if (attempt == 1) {
+            attempt--;
+            alert("This is your final attempt");
+        }
+        else if (attempt == 0) {
+            alert("Too many Incorrect attempts! You will start again!")
+            window.location.href = "https://8000-b0bfd19b-42b8-476c-bb80-c849c316f359.ws-eu03.gitpod.io/";
+        }
+        else {
+            attempt--;
+            alert(`You have ${attempt} remaining attempts`);
+        }}
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
@@ -119,7 +133,7 @@ window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-
         quickType("riddle-1");
         changeId();
         setTimeout(function () {
-            $("span#riddle-1").css("display", "block").after('<span id="solve" data-text="Answer: "></span>')
+            $("span#riddle-1").css("display", "block")//Perhaps I should make this a display block class and use add class
         }, 3800);
         setTimeout(function () {
             quickType("solve")
@@ -163,24 +177,32 @@ confirmButton.onclick = function () {
             $("span").last().addClass("pixel");
             quickType("code-input")
         }
-        else if (attempt == 1) {
-            attempt--;
-            alert("This is your final attempt");
-        }
-        else if (attempt == 0) {
-            alert("Too many Incorrect attempts! You will start again!")
-            window.location.href = "https://8000-b0bfd19b-42b8-476c-bb80-c849c316f359.ws-eu03.gitpod.io/";
-        }
-        else {
-            attempt--;
-            alert(`You have ${attempt} remaining attempts`);
-        }
+        else {attempts()};
         console.log(attempt)
     }
 };
 
 function riddles(){riddleCount += 1;
     answer = document.getElementById("answer").value;
-if (answer = riddlesAns.riddle1 && riddleCount == 1){
-    alert("It works!")
-}}
+if (answer == riddlesAns.riddle1){
+    $("#riddle-1").empty();
+    $("#solve").empty();
+    $("#answer").remove();
+    $("span").last().addClass("pixel");
+    quickType("pass")
+    setTimeout(function () {
+            $("span#pass").css("display", "block")//Perhaps I should make this a display block class and use add class
+        }, 3800);
+    setTimeout(function () {
+            quickType("solve")
+        }, 4000);
+     setTimeout(function () {
+            $(".pixel").removeClass("pixel")
+        }, 5800);
+    setTimeout(function () {
+            $("#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
+        }, 5700);
+}
+else {attempts()};
+}
+
