@@ -85,6 +85,12 @@ function answerRiddle(riddleId){
         }, 9500);
 }
 
+function storeAnswers (){
+    answers = document.getElementById("answer").value;
+    answeredRiddles.push(answers);
+    console.log(answeredRiddles);
+}
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
@@ -103,6 +109,8 @@ let riddlesAns ={
     riddle9: "a",
     riddle10: "b",
 }
+
+let answeredRiddles = [];
 
 var button = document.getElementById("yes");
 button.onclick = function () {
@@ -209,6 +217,7 @@ function riddles(){
     riddleCount += 1;
     answer = document.getElementById("answer").value;
 if (answer == riddlesAns.riddle1){
+    storeAnswers();
     $("#riddle-1").empty();
     $("#solve").empty();
     $("#answer").remove();
@@ -216,3 +225,4 @@ if (answer == riddlesAns.riddle1){
 }
 else {attempts()};
 }
+
