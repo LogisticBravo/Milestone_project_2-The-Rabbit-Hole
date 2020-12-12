@@ -92,6 +92,14 @@ function storeAnswers (){
     console.log(answeredRiddles);
 }
 
+function resetRiddles (emptyRiddleId){
+    $("#pass").remove();
+    $(`#${emptyRiddleId}`).empty();
+    $("#solve").empty();
+    $("#answer").remove();
+    attempt = 3;
+}
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
@@ -226,12 +234,8 @@ if (answer == riddlesAns.riddle1 && answeredRiddles.length === 0){
 }
 else if (answer == riddlesAns.riddle2 && answeredRiddles.length === 1){
     storeAnswers();
-    $("#pass").remove();
-    $("#riddle-2").empty();
-    $("#solve").empty();
-    $("#answer").remove();
+    resetRiddles("riddle-2");
     answerRiddle("riddle-3");
 }
 else {attempts()};
 }
-
