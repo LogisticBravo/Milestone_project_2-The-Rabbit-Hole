@@ -62,7 +62,7 @@ function attempts(){
             alert(`You have ${attempt} remaining attempts`);
         }}
 
-function answerRiddle(riddleId){
+function answerRiddle(riddleId, defaultTime = 7600){
     $("span").last().addClass("pixel");
     $(`span#${riddleId}`).prev().after('<span id="pass" data-text="Well done. . . Next Riddle:"></span>');
     quickType("pass")
@@ -74,16 +74,16 @@ function answerRiddle(riddleId){
         }, 3900);
     setTimeout(function () {
             $(`span#${riddleId}`).css("display", "block")
-        }, 7600);
+        }, defaultTime);
     setTimeout(function () {
             quickType("solve")
-        }, 8200);
+        }, defaultTime + 600);
     setTimeout(function () {
             $(".pixel").removeClass("pixel")
-        }, 9600);
+        }, defaultTime + 2000);
     setTimeout(function () {
             $("#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
-        }, 9500);
+        }, defaultTime + 1900);
 }
 
 function storeAnswers (){
@@ -235,7 +235,7 @@ if (answer == riddlesAns.riddle1 && answeredRiddles.length === 0){
 else if (answer == riddlesAns.riddle2 && answeredRiddles.length === 1){
     storeAnswers();
     resetRiddles("riddle-2");
-    answerRiddle("riddle-3");
+    answerRiddle("riddle-3", 12500);
 }
 else if (answer == riddlesAns.riddle3 && answeredRiddles.length === 2){
     storeAnswers();
