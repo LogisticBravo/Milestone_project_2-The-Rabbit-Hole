@@ -237,5 +237,10 @@ else if (answer == riddlesAns.riddle2 && answeredRiddles.length === 1){
     resetRiddles("riddle-2");
     answerRiddle("riddle-3");
 }
+else if (answer == riddlesAns.riddle3 && answeredRiddles.length === 2){
+    storeAnswers();
+    resetRiddles("riddle-3");
+    answerRiddle("riddle-4");
+}
 else {attempts()};
 }
