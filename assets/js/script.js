@@ -121,8 +121,8 @@ let riddlesAns ={
     riddle6: "right",
     riddle7: "left",
     riddle8: "right",
-    riddle9: "a",
-    riddle10: "b",
+    riddle9: "b",
+    riddle10: "a",
 }
 
 let answeredRiddles = [];
@@ -244,6 +244,24 @@ else if (answer == riddlesAns.riddle2 && answeredRiddles.length === 1){
 }
 else if (answer == riddlesAns.riddle3 && answeredRiddles.length === 2){
     nextRiddle("riddle-3","riddle-4", 12500);
+}
+else if (answer == riddlesAns.riddle4 && answeredRiddles.length === 3){
+    nextRiddle("riddle-4","riddle-5", 10500);
+}
+else if (answer == riddlesAns.riddle5 && answeredRiddles.length === 4){
+    nextRiddle("riddle-5","riddle-6", 22000);
+}
+else if (answer == riddlesAns.riddle6 && answeredRiddles.length === 5){
+    nextRiddle("riddle-6","riddle-7", 11500);
+}
+else if (answer == riddlesAns.riddle7 && answeredRiddles.length === 6){
+    nextRiddle("riddle-7","riddle-8", 12500);
+}
+else if (answer == riddlesAns.riddle8 && answeredRiddles.length === 7){
+    nextRiddle("riddle-8","riddle-9");
+}
+else if (answer == riddlesAns.riddle9 && answeredRiddles.length === 8){
+    nextRiddle("riddle-9","riddle-10");
 }
 else {attempts()};
 }
