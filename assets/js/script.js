@@ -100,6 +100,12 @@ function resetRiddles (emptyRiddleId){
     attempt = 3;
 }
 
+function nextRiddle(prevRiddleId, nextRiddleId, defaultTime){
+    storeAnswers();
+    resetRiddles(prevRiddleId);
+    answerRiddle(nextRiddleId, defaultTime);
+}
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
@@ -230,17 +236,14 @@ if (answer == riddlesAns.riddle1 && answeredRiddles.length === 0){
     $("#riddle-1").empty();
     $("#solve").empty();
     $("#answer").remove();
+    attempt = 3;
     answerRiddle("riddle-2");
 }
 else if (answer == riddlesAns.riddle2 && answeredRiddles.length === 1){
-    storeAnswers();
-    resetRiddles("riddle-2");
-    answerRiddle("riddle-3", 12500);
+    nextRiddle("riddle-2","riddle-3",12500);
 }
 else if (answer == riddlesAns.riddle3 && answeredRiddles.length === 2){
-    storeAnswers();
-    resetRiddles("riddle-3");
-    answerRiddle("riddle-4");
+    nextRiddle("riddle-3","riddle-4", 12500);
 }
 else {attempts()};
 }
