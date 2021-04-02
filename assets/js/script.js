@@ -106,6 +106,25 @@ function nextRiddle(prevRiddleId, nextRiddleId, defaultTime){
     answerRiddle(nextRiddleId, defaultTime);
 }
 
+function anagramSolve (){
+    $("#konami").empty();
+        var yourNameShuffled = remove(scrambled)
+        quickType("anagram",yourNameShuffled);
+        setTimeout(function () {
+            $("span#anagram").css("display", "block")
+        }, 3800);
+        setTimeout(function () {
+            quickType("solve");
+        }, 4000);
+        setTimeout(function () {
+            $(".pixel").removeClass("pixel")
+        }, 5800);
+        setTimeout(function () {
+            $("span#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
+        }, 5700);
+        showHide("confirm","reset","yes","no");
+    }
+
 window.onload = setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
@@ -138,24 +157,7 @@ button.onclick = function () {
         setTimeout(function () { $(".pixel").removeClass("pixel") }, 1500);
         setTimeout(function () { $("#name").focus() }, 1600);
     }
-    if (count === 2) {
-        $("#konami").empty();
-        var yourNameShuffled = remove(scrambled)
-        quickType("anagram",yourNameShuffled);
-        setTimeout(function () {
-            $("span#anagram").css("display", "block")
-        }, 3800);
-        setTimeout(function () {
-            quickType("solve");
-        }, 4000);
-        setTimeout(function () {
-            $(".pixel").removeClass("pixel")
-        }, 5800);
-        setTimeout(function () {
-            $("span#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
-        }, 5700);
-        showHide("confirm","reset","yes","no");
-    }
+    else {anagramSolve()};
     console.log(count);
 };
 
@@ -264,7 +266,17 @@ else if (answer == riddlesAns.riddle9 && answeredRiddles.length === 8){
     nextRiddle("riddle-9","riddle-10");
 }
 else if (answer == riddlesAns.riddle10 && answeredRiddles.length === 9){
-    nextRiddle("riddle-10","riddle-11");
+    storeAnswers();
+    resetRiddles ("riddle-10");
+    anagramSolve ();
 }
+else if (answer == yourName.concat("2020") && answeredRiddles.length === 10 && attempt >= 0) {
+            alert("Correct");
+            $("#anagram").empty();
+            $("#solve").empty();
+            $("#answer").remove();
+            $("span").last().addClass("pixel");
+            quickType("code-input")
+        }
 else {attempts()};
 }
