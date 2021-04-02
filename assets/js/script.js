@@ -143,7 +143,7 @@ button.onclick = function () {
         var yourNameShuffled = remove(scrambled)
         quickType("anagram",yourNameShuffled);
         setTimeout(function () {
-            $("span#anagram").css("display", "block").after('<span id="solve" data-text="Answer: "></span>')
+            $("span#anagram").css("display", "block")
         }, 3800);
         setTimeout(function () {
             quickType("solve");
@@ -262,6 +262,9 @@ else if (answer == riddlesAns.riddle8 && answeredRiddles.length === 7){
 }
 else if (answer == riddlesAns.riddle9 && answeredRiddles.length === 8){
     nextRiddle("riddle-9","riddle-10");
+}
+else if (answer == riddlesAns.riddle10 && answeredRiddles.length === 9){
+    nextRiddle("riddle-10","riddle-11");
 }
 else {attempts()};
 }
