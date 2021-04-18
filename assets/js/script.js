@@ -248,18 +248,19 @@ confirmButton.onclick = function () {
                     answeredRiddles = answers.replace(/Arrow/g,'').replace(/Key/g,'').split(" "); //removes the words 'Arrow' and 'Key' from the Array
                     answeredRiddles.shift(); 
                     answeredRiddles.length = 10; //Restricts the length of the Array to 10 so that the first 10 key strokes only are added to the array
+                    resetButton.onclick = function (){answers = {};answeredRiddles = [];$("#log").empty();};
                     console.log(answeredRiddles);
 }}, 6000);
         }
         else {attempts()};
         console.log(attempt)
     }
-    if (confirmCount >= 2 && confirmCount <= 5 && count === 3) {
+    if (confirmCount >= 2 && count === 3) {
     for (let i = 0; i < answeredRiddles.length; i++) {
         answeredRiddles[i] = answeredRiddles[i].toLowerCase();
 }
         riddlesAns = Object.values(riddlesAns); //converts the objects property values to an array
-        arrayEquals(riddlesAns,answeredRiddles) //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
+        arrayEquals(riddlesAns,answeredRiddles); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
     }
 };
 
