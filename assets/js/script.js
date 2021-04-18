@@ -204,6 +204,15 @@ resetButton.onclick = function () {
     } 
 //console.log(scrambled) - debug to check that name was passed to 'scrambled'
 
+function arrayEquals(a, b) { //Compare two arrays to check they are the same (Attributed to: https://masteringjs.io/tutorials/fundamentals/compare-arrays)
+  if (Array.isArray(a) &&
+    Array.isArray(b) &&
+    a.length === b.length &&
+    a.every((val, index) => val === b[index]))
+    {alert("Correct");}
+    else{attempts()};
+}
+
 var confirmButton = document.getElementById("confirm");
 confirmButton.onclick = function () {
     confirmCount += 1;
@@ -223,10 +232,34 @@ confirmButton.onclick = function () {
             $("#solve").empty();
             $("#answer").remove();
             $("span").last().addClass("pixel");
-            quickType("code-input")
+            quickType("code-input");
+            setTimeout(function () {
+            quickType("solve")
+        }, 6000);
+    setTimeout(function () {
+            $("#solve").after('<p id="log"></p>');
+            $("#log").hide();
+            $("#solve").hide();
+            count +=1;
+            document.addEventListener('keydown', logKey); //Keyboard event listener for the input of the code
+                function logKey(e) {
+                    log.textContent += ` ${e.code}`;
+                    answers = document.getElementById("log").innerHTML;
+                    answeredRiddles = answers.replace(/Arrow/g,'').replace(/Key/g,'').split(" "); //removes the words 'Arrow' and 'Key' from the Array
+                    answeredRiddles.shift(); 
+                    answeredRiddles.length = 10; //Restricts the length of the Array to 10 so that the first 10 key strokes only are added to the array
+                    console.log(answeredRiddles);
+}}, 6000);
         }
         else {attempts()};
         console.log(attempt)
+    }
+    if (confirmCount >= 2 && confirmCount <= 5 && count === 3) {
+    for (let i = 0; i < answeredRiddles.length; i++) {
+        answeredRiddles[i] = answeredRiddles[i].toLowerCase();
+}
+        riddlesAns = Object.values(riddlesAns); //converts the objects property values to an array
+        arrayEquals(riddlesAns,answeredRiddles) //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
     }
 };
 
