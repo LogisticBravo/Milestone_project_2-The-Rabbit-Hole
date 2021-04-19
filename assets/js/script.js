@@ -209,7 +209,7 @@ function arrayEquals(a, b) { //Compare two arrays to check they are the same (At
     Array.isArray(b) &&
     a.length === b.length &&
     a.every((val, index) => val === b[index]))
-    {alert("Correct");}
+    asciiLoading();
     else{attempts()};
 }
 
@@ -350,3 +350,36 @@ if (riddleCount >= 11 && attempt >=0){
 }
 else {attempts()};
 }
+
+function asciiLoading (){
+    $("div div div").empty();
+    $("#central").append("<span id='count1'>98</span><span id='count2'>114</span><span id='count3'>97</span><span id='count4'>100</span><span id='count5'>108</span><span id='count6'>101</span><span id='count7'>121</span>");
+    function animateValue(obj, start, end, duration) { //courtesy of https://css-tricks.com/animating-number-counters/
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+setTimeout(function(){
+var obj = document.getElementById("count1");
+animateValue(obj, 98, 76, 7000);
+var obj = document.getElementById("count2");
+animateValue(obj, 114, 79, 10000);
+var obj = document.getElementById("count3");
+animateValue(obj, 97, 65, 4500);
+var obj = document.getElementById("count4");
+animateValue(obj, 100, 68, 6000);
+var obj = document.getElementById("count5");
+animateValue(obj, 108, 73, 9000);
+var obj = document.getElementById("count6");
+animateValue(obj, 101, 78, 15000);
+var obj = document.getElementById("count7");
+animateValue(obj, 121, 71, 12000);
+},5000);
+};
