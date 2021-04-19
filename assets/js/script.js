@@ -213,6 +213,32 @@ function arrayEquals(a, b) { //Compare two arrays to check they are the same (At
     else{attempts()};
 }
 
+function keyListen (){
+    setTimeout(function () {
+            $("#solve").after('<p id="log"></p>');
+            $("#log").hide();
+            $("#solve").hide();
+            count +=1;
+            document.addEventListener('keydown', logKey); //Keyboard event listener for the input of the code
+                function logKey(e) {
+                    log.textContent += ` ${e.code}`;
+                    answers = document.getElementById("log").innerHTML;
+                    answeredRiddles = answers.replace(/Arrow/g,'').replace(/Key/g,'').split(" "); //removes the words 'Arrow' and 'Key' from the Array
+                    answeredRiddles.shift(); 
+                    answeredRiddles.length = 10; //Restricts the length of the Array to 10 so that the first 10 key strokes only are added to the array
+                    resetButton.onclick = function (){answers = {};answeredRiddles = [];$("#log").empty();};
+                    console.log(answeredRiddles);
+}}, 6000);
+}
+
+function checkArray (){
+    for (let i = 0; i < answeredRiddles.length; i++) {
+        answeredRiddles[i] = answeredRiddles[i].toLowerCase();
+}
+        riddlesAns = Object.values(riddlesAns); //converts the objects property values to an array
+        arrayEquals(riddlesAns,answeredRiddles); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
+}
+
 var confirmButton = document.getElementById("confirm");
 confirmButton.onclick = function () {
     confirmCount += 1;
@@ -236,31 +262,13 @@ confirmButton.onclick = function () {
             setTimeout(function () {
             quickType("solve")
         }, 6000);
-    setTimeout(function () {
-            $("#solve").after('<p id="log"></p>');
-            $("#log").hide();
-            $("#solve").hide();
-            count +=1;
-            document.addEventListener('keydown', logKey); //Keyboard event listener for the input of the code
-                function logKey(e) {
-                    log.textContent += ` ${e.code}`;
-                    answers = document.getElementById("log").innerHTML;
-                    answeredRiddles = answers.replace(/Arrow/g,'').replace(/Key/g,'').split(" "); //removes the words 'Arrow' and 'Key' from the Array
-                    answeredRiddles.shift(); 
-                    answeredRiddles.length = 10; //Restricts the length of the Array to 10 so that the first 10 key strokes only are added to the array
-                    resetButton.onclick = function (){answers = {};answeredRiddles = [];$("#log").empty();};
-                    console.log(answeredRiddles);
-}}, 6000);
+        keyListen();
         }
         else {attempts()};
         console.log(attempt)
     }
     if (confirmCount >= 2 && count === 3) {
-    for (let i = 0; i < answeredRiddles.length; i++) {
-        answeredRiddles[i] = answeredRiddles[i].toLowerCase();
-}
-        riddlesAns = Object.values(riddlesAns); //converts the objects property values to an array
-        arrayEquals(riddlesAns,answeredRiddles); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
+        checkArray();
     }
 };
 
@@ -310,7 +318,35 @@ else if (answer == yourName.concat("2020") && answeredRiddles.length === 10 && a
             $("#solve").empty();
             $("#answer").remove();
             $("span").last().addClass("pixel");
-            quickType("code-input")
+            quickType("code-input");
+            setTimeout(function () {
+            quickType("solve")
+        }, 6000);
+        setTimeout(function () {
+            $("#log").css("display", "block");
+        }, 4100);
+        kcode();
         }
+else {attempts()};
+}
+
+function kcode (){
+if (riddleCount >= 11 && attempt >=0){
+    $("button#confirmRiddle").attr("id","confirm");
+    keyListen();
+    $("#confirm").after('<button class="show" id="riddleAnswers">Show Answered Riddles</button>');
+    var riddleAnsButton = document.getElementById("riddleAnswers");
+    riddleAnsButton.onclick = function () {
+    document.getElementById("log").innerHTML = answeredRiddles.toString();
+    setTimeout(function () {
+            $("#log").css("display", "none");
+            $("#riddleAnswers").remove();
+            answeredRiddles = [];
+        }, 2800);
+}
+    confirmButton.onclick = function(){
+    checkArray();   
+    };
+}
 else {attempts()};
 }
