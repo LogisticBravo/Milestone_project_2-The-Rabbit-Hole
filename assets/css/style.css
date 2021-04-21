@@ -12,6 +12,28 @@ body{
     transform: translateX(-50%) translateY(-50%);
 
 }
+tr td:nth-child(1) {
+    text-align: right;
+}
+
+tr td:nth-child(2) {
+    border-left: dashed 0.5px;
+    border-right: dashed 0.5px;
+    padding: 0 1rem 0 1rem;
+    text-align: center;
+}
+
+tr td:nth-child(3) {
+    text-align: left;
+}
+
+.borders {
+    border: dashed 0.5px;
+}
+
+div p {
+    padding: 1rem;
+}
 
 .pixel{
   height: 20px;
