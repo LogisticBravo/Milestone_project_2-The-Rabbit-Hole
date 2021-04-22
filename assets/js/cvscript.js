@@ -143,12 +143,14 @@ function keyListen (){
                     log.textContent += ` ${e.code}`;
                     kcode = document.getElementById("log").innerHTML;
                     konami = kcode.replace(/Arrow/g,'').replace(/Key/g,'').split(" "); //removes the words 'Arrow' and 'Key' from the Array
-                    konami.shift(); 
-                    konami.length = 10; //Restricts the length of the Array to 10 so that the first 10 key strokes only are added to the array
-                    if(konami.includes("Up","0") == true && konami.includes("Up","2") == false && konami.includes("A","9") == true){konamiCount += 1};
-                    if(konamiCount > 0){checkArray();};
+                    konami.shift();
+                    if (konami.length === 10){konamiCount +=1;checkArray();}
                     console.log(konami);
 };
+}
+function checkCount(){
+if(konamiCount ===1){ideTheme();};
+if(konamiCount ===2){matrixTheme();};
 }
 
 function arrayEquals(a, b) { //Compare two arrays to check they are the same (Attributed to: https://masteringjs.io/tutorials/fundamentals/compare-arrays)
@@ -156,8 +158,15 @@ function arrayEquals(a, b) { //Compare two arrays to check they are the same (At
     Array.isArray(b) &&
     a.length === b.length &&
     a.every((val, index) => val === b[index]))
-    alert("Correct");
-else alert("wrong");
+    checkCount();
+else reset();
+}
+
+function reset(){
+    alert("wrong");
+    konamiCount -= 1;
+    $("#log").empty();
+    konami=[];
 }
 
 function checkArray (){
@@ -166,4 +175,27 @@ function checkArray (){
 }
         riddlesAns = Object.values(riddlesAns); //converts the objects property values to an array
         arrayEquals(riddlesAns,konami); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
+}
+
+function ideTheme (){
+    $(":header").addClass("ide-blue");
+    $("p").addClass("ide-orange");
+    $("li").addClass("ide-pink");
+    $("td:first-child").addClass("ide-yellow");
+    $("td:last-child").addClass("ide-yellow");
+    $("td:nth-child(2)").addClass("ide-cyan");
+    $("td:first-child:contains('/')").removeClass("ide-yellow").addClass("ide-green");
+    $("#log").empty();
+    konami=[];
+}
+
+function matrixTheme () {
+    $(":header").removeClass("ide-blue").addClass("matrix");
+        $("p").removeClass("ide-orange").addClass("matrix");
+        $("li").removeClass("ide-pink").addClass("matrix");
+        $("td:first-child").removeClass("ide-yellow").addClass("matrix");
+        $("td:last-child").removeClass("ide-yellow").addClass("matrix");
+        $("td:nth-child(2)").removeClass("ide-cyan").addClass("matrix");
+        $("td:first-child:contains('/')").removeClass("ide-green").addClass("matrix");
+        $(".col-md-auto").addClass("matrix");
 }
