@@ -84,6 +84,12 @@ function answerRiddle(riddleId, defaultTime = 7600){
     setTimeout(function () {
             $("#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
         }, defaultTime + 1900);
+        $("#confirmRiddle").prop("disabled", true);
+        $("#reset").prop("disabled", true);
+        setTimeout(function(){
+    $("#confirmRiddle").removeAttr("disabled");
+    $("#reset").removeAttr("disabled");
+},defaultTime + 1900);
 }
 
 function storeAnswers (){
@@ -95,6 +101,7 @@ function storeAnswers (){
 function resetRiddles (emptyRiddleId){
     $("#pass").remove();
     $(`#${emptyRiddleId}`).empty();
+    $(`#${emptyRiddleId}`).remove();
     $("#solve").empty();
     $("#answer").remove();
     attempt = 3;
@@ -123,13 +130,29 @@ function anagramSolve (){
             $("span#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
         }, 5700);
         showHide("confirm","reset","yes","no");
+        $("#confirm").prop("disabled", true);
+        $("#confirmRiddle").prop("disabled", true);
+        $("#reset").prop("disabled", true);
+        setTimeout(function(){
+    $("#confirm").removeAttr("disabled");
+    $("#confirmRiddle").removeAttr("disabled");
+    $("#reset").removeAttr("disabled");
+},7200);
     }
 
-window.onload = setTimeout(function () {
+window.onload = 
+setTimeout(function () {
     var txt = $("#main-content").data("text");
     typeWriter(txt, 0, "main-content");
     counts();
-}, 5000);
+}, 3500);
+setTimeout(function(){
+    $("#yes").removeAttr("disabled");
+    $("#no").removeAttr("disabled");
+},5800);
+$(".pixel").removeClass("pixel");
+$("#yes").prop("disabled", true);
+$("#no").prop("disabled", true);
 
 let riddlesAns ={
     riddle1: "up",
@@ -151,11 +174,16 @@ button.onclick = function () {
     count += 1;
     if (count === 1) {
         $("#main-content").empty();
+        $("span").last().addClass("pixel");
+        $("#confirm").prop("disabled", true);
+        $("#reset").prop("disabled", true);
         quickType("second");
         showHide("confirm","reset","yes","no");
         setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);
         setTimeout(function () { $(".pixel").removeClass("pixel") }, 1500);
         setTimeout(function () { $("#name").focus() }, 1600);
+        setTimeout(function(){$("#confirm").removeAttr("disabled");
+    $("#reset").removeAttr("disabled")}, 1700);
     }
     else {anagramSolve()};
     console.log(count);
@@ -192,6 +220,12 @@ window.location.href ="https://github.com/LogisticBravo/Milestone_project_2-The-
         setTimeout(function () {
             $("span#solve").after('<input type="text" id="answer" name="answer">'); $("#answer").focus();
         }, 5700);
+        $("#confirmRiddle").prop("disabled", true);
+        $("#reset").prop("disabled", true);
+        setTimeout(function(){
+    $("#confirmRiddle").removeAttr("disabled");
+    $("#reset").removeAttr("disabled");
+},5800);
         riddleButton.onclick = function (){
     riddles();};
     }
@@ -211,6 +245,12 @@ function arrayEquals(a, b) { //Compare two arrays to check they are the same (At
     a.every((val, index) => val === b[index]))
     asciiLoading();
     else{attempts()};
+    checkAttempt();
+}
+
+function checkAttempt (){
+    if(attempt === 2){answers = {};answeredRiddles = [];$("#log").empty();};
+    if(attempt === 1){answers = {};answeredRiddles = [];$("#log").empty();};
 }
 
 function keyListen (){
@@ -218,6 +258,8 @@ function keyListen (){
             $("#solve").after('<p id="log"></p>');
             $("#log").hide();
             $("#solve").hide();
+            $("#confirm").prop("disabled", true);
+            $("#reset").prop("disabled", true);
             count +=1;
             document.addEventListener('keydown', logKey); //Keyboard event listener for the input of the code
                 function logKey(e) {
@@ -225,7 +267,9 @@ function keyListen (){
                     answers = document.getElementById("log").innerHTML;
                     answeredRiddles = answers.replace(/Arrow/g,'').replace(/Key/g,'').split(" "); //removes the words 'Arrow' and 'Key' from the Array
                     answeredRiddles.shift(); 
-                    answeredRiddles.length = 10; //Restricts the length of the Array to 10 so that the first 10 key strokes only are added to the array
+                    //answeredRiddles.length = 10; //Restricts the length of the Array to 10 so that the first 10 key strokes only are added to the array
+                    if(answeredRiddles.length === 10){$("#confirm").removeAttr("disabled");
+    $("#reset").removeAttr("disabled");answeredRiddles.length = 10;}
                     resetButton.onclick = function (){answers = {};answeredRiddles = [];$("#log").empty();};
                     console.log(answeredRiddles);
 }}, 6000);
@@ -248,7 +292,13 @@ confirmButton.onclick = function () {
         $("#second").empty();
         $("span").last().addClass("pixel");
         quickType("konami",yourName,"?");
+        $("#yes").prop("disabled", true);
+        $("#no").prop("disabled", true);
         showHide("yes","no","confirm","reset");
+        setTimeout(function(){
+    $("#yes").removeAttr("disabled");
+    $("#no").removeAttr("disabled");
+},2100);
     }
     if (confirmCount >= 2 && confirmCount <= 5 && count === 2) {
         answer = document.getElementById("answer").value;
@@ -262,6 +312,8 @@ confirmButton.onclick = function () {
             setTimeout(function () {
             quickType("solve")
         }, 6000);
+        $("#confirm").prop("disabled", true);
+        $("#reset").prop("disabled", true);
         keyListen();
         }
         else {attempts()};
@@ -333,16 +385,19 @@ else {attempts()};
 function kcode (){
 if (riddleCount >= 11 && attempt >=0){
     $("button#confirmRiddle").attr("id","confirm");
+    $(".pixel").removeClass("pixel");
     keyListen();
     $("#confirm").after('<button class="show" id="riddleAnswers">Show Answered Riddles</button>');
     var riddleAnsButton = document.getElementById("riddleAnswers");
     riddleAnsButton.onclick = function () {
     document.getElementById("log").innerHTML = answeredRiddles.toString();
     setTimeout(function () {
-            $("#log").css("display", "none");
+            $("#log").addClass("show");
             $("#riddleAnswers").remove();
-            answeredRiddles = [];
         }, 2800);
+    setTimeout(function () {
+            $("#log").addClass("hide");
+        }, 7000);
 }
     confirmButton.onclick = function(){
     checkArray();   
@@ -353,7 +408,7 @@ else {attempts()};
 
 function asciiLoading (){
     $("div div div").empty();
-    $("#central").append("<span id='count1'>98</span><span id='count2'>114</span><span id='count3'>97</span><span id='count4'>100</span><span id='count5'>108</span><span id='count6'>101</span><span id='count7'>121</span>");
+    $("#central").append("<span id='count1' class='pr-5'>98</span><span id='count2' class='pr-5'>114</span><span id='count3' class='pr-5'>97</span><span id='count4' class='pr-5'>100</span><span id='count5' class='pr-5'>108</span><span id='count6' class='pr-5'>101</span><span id='count7' class='pr-5'>121</span>");
     function animateValue(obj, start, end, duration) { //courtesy of https://css-tricks.com/animating-number-counters/
   let startTimestamp = null;
   const step = (timestamp) => {
@@ -369,17 +424,24 @@ function asciiLoading (){
 setTimeout(function(){
 var obj = document.getElementById("count1");
 animateValue(obj, 98, 76, 7000);
+setTimeout(function(){$("#count1").addClass("matrix")},7100);
 var obj = document.getElementById("count2");
 animateValue(obj, 114, 79, 10000);
+setTimeout(function(){$("#count2").addClass("matrix")},10100);
 var obj = document.getElementById("count3");
 animateValue(obj, 97, 65, 4500);
+setTimeout(function(){$("#count3").addClass("matrix")},4600);
 var obj = document.getElementById("count4");
 animateValue(obj, 100, 68, 6000);
+setTimeout(function(){$("#count4").addClass("matrix")},6100);
 var obj = document.getElementById("count5");
 animateValue(obj, 108, 73, 9000);
+setTimeout(function(){$("#count5").addClass("matrix")},9100);
 var obj = document.getElementById("count6");
 animateValue(obj, 101, 78, 15000);
+setTimeout(function(){$("#count6").addClass("matrix")},15100);
 var obj = document.getElementById("count7");
 animateValue(obj, 121, 71, 12000);
+setTimeout(function(){$("#count7").addClass("matrix")},12100);
 },5000);
 };
