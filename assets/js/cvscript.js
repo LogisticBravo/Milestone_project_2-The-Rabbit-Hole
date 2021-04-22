@@ -185,6 +185,7 @@ function ideTheme (){
     $("td:last-child").addClass("ide-yellow");
     $("td:nth-child(2)").addClass("ide-cyan");
     $("td:first-child:contains('/')").removeClass("ide-yellow").addClass("ide-green");
+    $(".col-md-auto").addClass("ide-cyan");
     $("#log").empty();
     konami=[];
 }
@@ -197,5 +198,5 @@ function matrixTheme () {
         $("td:last-child").removeClass("ide-yellow").addClass("matrix");
         $("td:nth-child(2)").removeClass("ide-cyan").addClass("matrix");
         $("td:first-child:contains('/')").removeClass("ide-green").addClass("matrix");
-        $(".col-md-auto").addClass("matrix");
+        $(".col-md-auto").removeClass("ide-cyan").addClass("matrix");
 }
