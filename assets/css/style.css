@@ -2,6 +2,10 @@ body{
     background-color: black;
     color: white;
 }
+
+.count-size{
+    font-size: 4em;
+}
 /********** Theme Colours **********/
 .ide-blue {
     color: #0096c7;
@@ -40,6 +44,17 @@ body{
     transform: translateX(-50%) translateY(-50%);
 
 }
+
+.dynamic-center-buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(65%);
+    -webkit-transform: translateX(-50%) translateY(65%);
+    transform: translateX(-50%) translateY(55%);
+
+}
+
 tr td:nth-child(1) {
     text-align: right;
 }
@@ -86,7 +101,7 @@ ul {
 }
 
 .show {
-    display: inline-block;
+    display: inline-block!important;
 }
 
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
