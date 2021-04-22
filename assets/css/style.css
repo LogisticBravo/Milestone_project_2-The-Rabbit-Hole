@@ -2,6 +2,34 @@ body{
     background-color: black;
     color: white;
 }
+/********** Theme Colours **********/
+.ide-blue {
+    color: #0096c7;
+}
+
+.ide-yellow {
+    color: #ffec89;
+}
+
+.ide-pink {
+    color: #d74894;
+}
+
+.ide-orange {
+    color: #d58747;
+}
+
+.ide-green {
+    color: #609b55;
+}
+
+.ide-cyan {
+    color: #4dbdae;
+}
+
+.matrix {
+    color: #03A062;
+}
 
 .dynamic-center {
     position: absolute;
