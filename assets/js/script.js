@@ -55,11 +55,11 @@ function attempts(){
         }
         else if (attempt == 0) {
             alert("Too many Incorrect attempts! You will start again!")
-            window.location.href = "https://8000-b0bfd19b-42b8-476c-bb80-c849c316f359.ws-eu03.gitpod.io/";
+            window.location.href = "index.html";
         }
         else {
             attempt--;
-            alert(`You have ${attempt} remaining attempts`);
+            alert(`You have ${attempt} remaining attempts\nHint:If answering riddles - use lowercase!`);
         }}
 
 function answerRiddle(riddleId, defaultTime = 7600){
@@ -444,4 +444,5 @@ var obj = document.getElementById("count7");
 animateValue(obj, 121, 71, 12000);
 setTimeout(function(){$("#count7").addClass("matrix")},12100);
 },5000);
+setTimeout(function(){window.location.href = "cv.html"},20000);
 };
