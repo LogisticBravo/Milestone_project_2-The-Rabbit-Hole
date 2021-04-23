@@ -67,6 +67,22 @@ input {
     color: #03A062;
 }
 
+.cli {
+    font-size: 0.75em;
+    color: lightslategray;
+    font-weight: 200!important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.mobile {
+    max-height: 40vh;
+    overflow-x: scroll;
+    max-width: 100%;
+}
+
 .dynamic-center {
     position: absolute;
     top: 50%;
