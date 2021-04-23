@@ -1,10 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 body{
     background-color: black;
     color: white;
 }
 
+main {
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 0.15em;
+}
+
+span {
+    font-weight: 200;
+}
+
 .count-size{
     font-size: 4em;
+}
+
+button {
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 100;
+}
+
+:disabled{
+    color: grey;
+}
+
+input {
+    color: white;
+    background-color: black;
+    border-color: white;
+    letter-spacing: inherit;
 }
 /********** Theme Colours **********/
 .ide-blue {
