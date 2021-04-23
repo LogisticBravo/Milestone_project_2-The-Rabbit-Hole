@@ -123,6 +123,7 @@ function anagramSolve() {
     $("#konami").empty();
     var yourNameShuffled = remove(scrambled)
     quickType("anagram", yourNameShuffled);
+    showHide("p3");
     setTimeout(function () {
         $("span#anagram").css("display", "block")
     }, 3800);
@@ -184,6 +185,7 @@ button.onclick = function () {
         $("#confirm").prop("disabled", true);
         $("#reset").prop("disabled", true);
         quickType("second");
+        showHide("p1");
         showHide("confirm", "reset", "yes", "no");
         setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);
         setTimeout(function () { $(".pixel").removeClass("pixel") }, 1500);
@@ -216,6 +218,7 @@ noButton.onclick = function () {
         showHide("confirm", "reset", "yes", "no");
         quickType("riddle-1");
         changeId();
+        showHide("p5");
         setTimeout(function () {
             $("span#riddle-1").css("display", "block")//Perhaps I should make this a display block class and use add class
         }, 3800);
@@ -312,6 +315,8 @@ confirmButton.onclick = function () {
         $("#yes").prop("disabled", true);
         $("#no").prop("disabled", true);
         showHide("yes", "no", "confirm", "reset");
+        showHide("p2");
+        $("#p2").append(yourName);
         setTimeout(function () {
             $("#yes").removeAttr("disabled");
             $("#no").removeAttr("disabled");
@@ -326,6 +331,9 @@ confirmButton.onclick = function () {
             $("#answer").remove();
             $("span").last().addClass("pixel");
             quickType("code-input");
+            showHide("p4");
+            showHide("p17");
+            $("#anagram-solve").append(yourName.concat("2020"));
             setTimeout(function () {
                 quickType("solve")
             }, 6000);
@@ -351,35 +359,56 @@ function riddles() {
         $("#answer").remove();
         attempt = 3;
         answerRiddle("riddle-2");
+        showHide("p6");
+        $("#answer1").append(answer);
     }
     else if (answer == riddlesAns.riddle2 && answeredRiddles.length === 1) {
         nextRiddle("riddle-2", "riddle-3", 12500);
+        showHide("p7");
+        $("#answer2").append(answer);
     }
     else if (answer == riddlesAns.riddle3 && answeredRiddles.length === 2) {
         nextRiddle("riddle-3", "riddle-4", 12500);
+        showHide("p8");
+        $("#answer3").append(answer);
     }
     else if (answer == riddlesAns.riddle4 && answeredRiddles.length === 3) {
         nextRiddle("riddle-4", "riddle-5", 10500);
+        showHide("p9");
+        $("#answer4").append(answer);
     }
     else if (answer == riddlesAns.riddle5 && answeredRiddles.length === 4) {
         nextRiddle("riddle-5", "riddle-6", 22000);
+        showHide("p10");
+        $("#answer5").append(answer);
     }
     else if (answer == riddlesAns.riddle6 && answeredRiddles.length === 5) {
         nextRiddle("riddle-6", "riddle-7", 11500);
+        showHide("p11");
+        $("#answer6").append(answer);
     }
     else if (answer == riddlesAns.riddle7 && answeredRiddles.length === 6) {
         nextRiddle("riddle-7", "riddle-8", 12500);
+        showHide("p12");
+        $("#answer7").append(answer);
     }
     else if (answer == riddlesAns.riddle8 && answeredRiddles.length === 7) {
         nextRiddle("riddle-8", "riddle-9");
+        showHide("p13");
+        $("#answer8").append(answer);
     }
     else if (answer == riddlesAns.riddle9 && answeredRiddles.length === 8) {
         nextRiddle("riddle-9", "riddle-10");
+        showHide("p14");
+        $("#answer9").append(answer);
     }
     else if (answer == riddlesAns.riddle10 && answeredRiddles.length === 9) {
         storeAnswers();
         resetRiddles("riddle-10");
         anagramSolve();
+        showHide("p15");
+        $("#answer10").append(answer);
+        $("#p3").addClass("hide").removeClass("show");
     }
     else if (answer == yourName.concat("2020") && answeredRiddles.length === 10 && attempt >= 0) {
         alert("Correct");
@@ -387,6 +416,7 @@ function riddles() {
         $("#solve").empty();
         $("#answer").remove();
         $("span").last().addClass("pixel");
+        showHide("p16");
         quickType("code-input");
         setTimeout(function () {
             quickType("solve")
