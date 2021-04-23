@@ -59,7 +59,7 @@ function attempts(){
         }
         else {
             attempt--;
-            alert(`You have ${attempt} remaining attempts\nHint:If answering riddles - use lowercase!`);
+            alert(`You have ${attempt} remaining attempts\nHint: If answering riddles - use lower case`);
         }}
 
 function answerRiddle(riddleId, defaultTime = 7600){
@@ -408,7 +408,7 @@ else {attempts()};
 
 function asciiLoading (){
     $("div div div").empty();
-    $("#central").append("<span id='count1' class='pr-5'>98</span><span id='count2' class='pr-5'>114</span><span id='count3' class='pr-5'>97</span><span id='count4' class='pr-5'>100</span><span id='count5' class='pr-5'>108</span><span id='count6' class='pr-5'>101</span><span id='count7' class='pr-5'>121</span>");
+    $("#central").append("<span id='count1' class='pr-5 count-size'>98</span><span id='count2' class='pr-5 count-size'>114</span><span id='count3' class='pr-5 count-size'>97</span><span id='count4' class='pr-5 count-size'>100</span><span id='count5' class='pr-5 count-size'>108</span><span id='count6' class='pr-5 count-size'>101</span><span id='count7' class='pr-5 count-size'>121</span>");
     function animateValue(obj, start, end, duration) { //courtesy of https://css-tricks.com/animating-number-counters/
   let startTimestamp = null;
   const step = (timestamp) => {
@@ -443,6 +443,7 @@ setTimeout(function(){$("#count6").addClass("matrix")},15100);
 var obj = document.getElementById("count7");
 animateValue(obj, 121, 71, 12000);
 setTimeout(function(){$("#count7").addClass("matrix")},12100);
+setTimeout(function(){window.location.href = "cv.html"},20000);
 },5000);
 setTimeout(function(){window.location.href = "cv.html"},20000);
 };
