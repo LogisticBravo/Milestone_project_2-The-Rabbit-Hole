@@ -297,8 +297,23 @@ function checkArray() {
     riddlesAns = Object.values(riddlesAns); //converts the objects property values to an array
     arrayEquals(riddlesAns, answeredRiddles); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
 }
-function checkInput() { 
-    if (count === 1 && ($("input").val().length == 0))
+function checkInput() {     
+    if(document.getElementById("name").value == "neo")
+    {$("button").addClass("matrix").removeClass("ide-pink").removeClass("ide-orange");
+        $("div").addClass("matrix").removeClass("ide-cyan");
+        $("a").addClass("matrix").removeClass("ide-yellow");
+        confirmCount -=1;
+        $("#name").val('');
+    }
+    else if(document.getElementById("name").value == "admin")
+    {$("#confirm").addClass("ide-pink").removeClass("matrix");
+        $("#reset").addClass("ide-orange").removeClass("matrix");
+        $("div").addClass("ide-cyan").removeClass("matrix");
+        $("a").removeClass("matrix").addClass("ide-yellow");
+        confirmCount -=1;
+        $("#name").val('');
+    }
+    else if (count === 1 && ($("input").val().length == 0))
     { alert("Input cannot be Empty!"); confirmCount -= 1; } 
 }
 
