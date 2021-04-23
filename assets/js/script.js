@@ -515,36 +515,43 @@ function asciiLoading() {
     setTimeout(function () { window.location.href = "cv.html" }, 20000);
 };
 
-
-
-function mobileKeys () {
-    if (answeredRiddles.length === 10) 
+function checkUnlock(){
+     if (answeredRiddles.length === 10) 
     {
                 $("#confirm").removeAttr("disabled");
                 $("#reset").removeAttr("disabled"); answeredRiddles.length = 10;
     }
+}
+
+function mobileKeys () {
     var arrowUpButton = document.getElementById("upkey");
     arrowUpButton.onclick = function (){
     answeredRiddles.push("Up");
+    checkUnlock();
     }
     var arrowDownButton = document.getElementById("downkey");
     arrowDownButton.onclick = function (){
     answeredRiddles.push("Down");
+    checkUnlock();
     }
     var arrowLeftButton = document.getElementById("leftkey");
     arrowLeftButton.onclick = function (){
     answeredRiddles.push("Left");
+    checkUnlock();
     }
     var arrowRightButton = document.getElementById("rightkey");
     arrowRightButton.onclick = function (){
     answeredRiddles.push("Right");
+    checkUnlock();
     }
     var aKeyButton = document.getElementById("akey");
     aKeyButton.onclick = function (){
     answeredRiddles.push("A");
+    checkUnlock();
     }
     var bKeyButton = document.getElementById("bkey");
     bKeyButton.onclick = function (){
     answeredRiddles.push("B");
+    checkUnlock();
     }
 }
