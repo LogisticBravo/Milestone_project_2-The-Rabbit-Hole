@@ -298,17 +298,20 @@ function checkArray() {
     arrayEquals(riddlesAns, answeredRiddles); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
 }
 function checkInput() {     
-    if(document.getElementById("name").value == "neo")
+    if($("input").val() == "neo")
     {$("button").addClass("matrix").removeClass("ide-pink").removeClass("ide-orange");
         $("div").addClass("matrix").removeClass("ide-cyan");
         $("a").addClass("matrix").removeClass("ide-yellow");
         confirmCount -=1;
         $("#name").val('');
     }
-    else if(document.getElementById("name").value == "admin")
+    else if($("input").val() == "admin")
     {$("#confirm").addClass("ide-pink").removeClass("matrix");
         $("#reset").addClass("ide-orange").removeClass("matrix");
+        $("#yes").addClass("ide-pink").removeClass("matrix");
+        $("#no").addClass("ide-orange").removeClass("matrix");
         $("div").addClass("ide-cyan").removeClass("matrix");
+        $("#solve").addClass("ide-blue").removeClass("matrix");
         $("a").removeClass("matrix").addClass("ide-yellow");
         confirmCount -=1;
         $("#name").val('');
@@ -355,6 +358,7 @@ confirmButton.onclick = function () {
             $("#confirm").prop("disabled", true);
             $("#reset").prop("disabled", true);
             keyListen();
+            mobileKeys();
         }
         else { attempts() };
         console.log(attempt)
@@ -449,6 +453,7 @@ function kcode() {
         $("button#confirmRiddle").attr("id", "confirm");
         $(".pixel").removeClass("pixel");
         keyListen();
+        mobileKeys();
         $("#confirm").after('<button class="show" id="riddleAnswers">Show Answered Riddles</button>');
         var riddleAnsButton = document.getElementById("riddleAnswers");
         riddleAnsButton.onclick = function () {
@@ -509,3 +514,37 @@ function asciiLoading() {
     }, 5000);
     setTimeout(function () { window.location.href = "cv.html" }, 20000);
 };
+
+
+
+function mobileKeys () {
+    if (answeredRiddles.length === 10) 
+    {
+                $("#confirm").removeAttr("disabled");
+                $("#reset").removeAttr("disabled"); answeredRiddles.length = 10;
+    }
+    var arrowUpButton = document.getElementById("upkey");
+    arrowUpButton.onclick = function (){
+    answeredRiddles.push("Up");
+    }
+    var arrowDownButton = document.getElementById("downkey");
+    arrowDownButton.onclick = function (){
+    answeredRiddles.push("Down");
+    }
+    var arrowLeftButton = document.getElementById("leftkey");
+    arrowLeftButton.onclick = function (){
+    answeredRiddles.push("Left");
+    }
+    var arrowRightButton = document.getElementById("rightkey");
+    arrowRightButton.onclick = function (){
+    answeredRiddles.push("Right");
+    }
+    var aKeyButton = document.getElementById("akey");
+    aKeyButton.onclick = function (){
+    answeredRiddles.push("A");
+    }
+    var bKeyButton = document.getElementById("bkey");
+    bKeyButton.onclick = function (){
+    answeredRiddles.push("B");
+    }
+}
