@@ -145,12 +145,12 @@ function keyListen (){
                     konami = kcode.replace(/Arrow/g,'').replace(/Key/g,'').split(" "); //removes the words 'Arrow' and 'Key' from the Array
                     konami.shift();
                     if (konami.length === 10){konamiCount +=1;checkArray();}
-                    console.log(konami);
 };
 }
-function checkCount(){
-if(konamiCount ===1){ideTheme();};
-if(konamiCount ===2){matrixTheme();};
+function checkCount(){ //Keep count for theme change
+if(konamiCount ===1){ideTheme()};
+if(konamiCount ===2){matrixTheme()};
+if(konamiCount ===3){vt323Theme()};
 }
 
 function arrayEquals(a, b) { //Compare two arrays to check they are the same (Attributed to: https://masteringjs.io/tutorials/fundamentals/compare-arrays)
@@ -158,7 +158,7 @@ function arrayEquals(a, b) { //Compare two arrays to check they are the same (At
     Array.isArray(b) &&
     a.length === b.length &&
     a.every((val, index) => val === b[index]))
-    checkCount();
+    checkCount(); //implements theme change based on count
 else reset();
 }
 
@@ -177,7 +177,7 @@ function checkArray (){
         arrayEquals(riddlesAns,konami); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
 }
 
-function ideTheme (){
+function ideTheme (){ //Changes UI to IDE theme
     $(":header").addClass("ide-blue");
     $("p").addClass("ide-orange");
     $("li").addClass("ide-pink");
@@ -190,7 +190,7 @@ function ideTheme (){
     konami=[];
 }
 
-function matrixTheme () {
+function matrixTheme () { //Changes UI to Matrix theme
     $(":header").removeClass("ide-blue").addClass("matrix");
         $("p").removeClass("ide-orange").addClass("matrix");
         $("li").removeClass("ide-pink").addClass("matrix");
@@ -199,4 +199,15 @@ function matrixTheme () {
         $("td:nth-child(2)").removeClass("ide-cyan").addClass("matrix");
         $("td:first-child:contains('/')").removeClass("ide-green").addClass("matrix");
         $(".col-md-auto").removeClass("ide-cyan").addClass("matrix");
+        $("#log").empty();
+        konami=[];
+}
+
+function vt323Theme () { //Changes UI to oldschool game font theme
+    $(".matrix").removeClass("matrix");
+    $("main").css("font-family","'VT323',monospace");
+    $("main").css("color","white");
+    $("#log").empty();
+    konami=[];
+    konamiCount = 0;
 }
