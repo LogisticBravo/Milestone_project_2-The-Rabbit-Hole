@@ -63,7 +63,7 @@ As such, the answers to the riddles, in order are: **up, up, down, down, left, r
 
 For the site owner, it’s purpose is to provide a fun, unique and interactive way of displaying his CV.  
 
-A live version of the site can be viewed [here](https://logisticbravo.github.io/).
+A live version of the site can be viewed [here](https://logisticbravo.github.io/Milestone_project_2-The-Rabbit-Hole).
 
 ![image](mdassets/mdimages/responsivedisplays.png "Images of site on mutiple screen sizes")
 
@@ -71,16 +71,14 @@ A live version of the site can be viewed [here](https://logisticbravo.github.io/
 ### User stories
 #### First Time Visitor Goals
 * As a First Time Visitor, I want to have an interactive fun experience.
-* As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
-* As a First Time Visitor, I want to access the site across a range of devices.
+* As a First Time Visitor, I want to receive feedback on my progression. 
+* As a First Time Visitor, I want to be redirected to the landing page if I navigate to a wrong or broken link.
 #### Returning Visitor Goals
-* As a Returning Visitor, I want to find additional relevant information.
-* As a Returning Visitor, I want to get in contact with the site owner with questions. 
-* As a Returning Visitor, I want to locate their social media links to stay up to date with content.
+* As a Returning Visitor, I want to be able to easily navigate throughout the site to find content.
+* As a Returning Visitor, I want to discover any and all easter eggs.
 #### Frequent User Goals
-* As a Frequent User, I want to check to see if there are any newly added podcasts or videos. 
-* As a Frequent User, I want to check to see if there are any new blog posts.
-* As a Frequent User, I want to sign up to the Newsletter so that I am emailed any major updates and/or changes to the website or organisation.
+* As a Frequent User, I want to access the site across a range of devices.
+* As a Frequent user, I want to see if any additional content or features have been added. 
 
 ### Design
 #### Colour Scheme
@@ -97,14 +95,14 @@ The site uses the following 6 colours primarily.
 In places it uses an alternate Green - 
 #### Typography
 * [The Roboto font](https://fonts.google.com/specimen/Roboto) is used on all elements throughout the site with monospace as a fall back in case of errors in loading the font. Roboto is a clean and stylish popular choice as Androids default font and so fits the target market of those that are more ‘tech’ orientated and gives a modern CLI esque take on the font. 
-* [VT323](https://fonts.google.com/specimen/Source+Sans+Pro) is used as an additional theme choice on the CV page and is a fitting nod to many an old school game. 
+* [VT323](https://fonts.google.com/specimen/VT323) is used as an additional theme choice on the CV page and is a fitting nod to many an old school game. 
 #### Imagery
 The site uses only one image which is that of the site owner and can be found on the CV page.   
 If so inclined, the ASCII formatted name of the  site owner on the CV page could also be classified as an image. 
 #### Wireframes
 ![wireframeimage](mdassets/mdimages/wireframe.png)   
 
-Full Wireframes drawn up using Figma can be found [here](https://www.figma.com/file/AksKEgNktmnJGypPxnyAFT/Milestone-Project-1-3D-Print-Q?node-id=0%3A1)
+Full Wireframes drawn up using Figma can be found [here](https://www.figma.com/file/mL9JotMF4MYMdmlnQvNUHA/Milestone-Project-2-The-Rabbit-Hole?node-id=0%3A1)
 
 ## Features
 * The index page features a flashing cursor animation.
@@ -112,23 +110,14 @@ Full Wireframes drawn up using Figma can be found [here](https://www.figma.com/f
 * The site uses a rolladex animation on the ASCII numbers before loading the CV page which when locked in turn green.
 * The CV page offers 3 themes.   
 * The site has a key listener in place so as to capture and implement an effect from the correct key strokes being input.
-
+* The site has a number of "Easter Eggs" throughout.
+* The site provides feedback on the users progress by way of a CLI type effect.
 ![Home Page Animation](mdassets/mdimages/indexanimation.gif)    
 
-* The footer is partially visible as you scroll to the bottom and fully reveals itself once the bottom of the page is reached.  
 
-![Reveal Footer](mdassets/mdimages/revealfooter.gif)    
-
-* The site is designed to be responsive across all devices.
-* The home page uses a carousel feature for the 3 build guides. Their runs and cycles through each option automatically, denotes which one is in view and also allows the user to navigate back and forth. The carousel is also responsive and so works on mobile and tablets.
-* All YouTube videos are embedded and can be play/paused by the user. As with all podcasts. 
-* Sign-up opens the sign-up modal. 
 * Custom 404 page should the user navigate to a non-existant link which will automatically be redirected to home.   
-This can be tested [here](https://logisticbravo.github.io/Milestone_Project-1-3DPrintQ/404.html)    
+This can be tested [here](https://logisticbravo.github.io/Milestone_project_2-The-Rabbit-Hole/404.html)    
 ![404 page image](mdassets/mdimages/404.png)    
-
-* All navigation links feature an underline from center animation. (Credit: hover.css)
-* Footer icons for address and email feature animations. (Credit: hover.css)
 
 ## Technologies Used
 ### Languages Used
@@ -163,50 +152,44 @@ This can be tested [here](https://logisticbravo.github.io/Milestone_Project-1-3D
 
 ## Testing
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
-<p>
+
 <a href="http://jigsaw.w3.org/css-validator/check/referer">
     <img style="border:0;width:88px;height:31px"
         src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
         alt="Valid CSS!" />
     </a>
-</p>
-<p>
+
 <a href="https://validator.w3.org/">
 <img style="border:0;width:88px;height:31px"
         src="https://www.w3.org/Icons/valid-html401-blue"
         alt="Valid HTML!" /> 
         </a>
-</p> 
+
 All links have been extensively tested to ensure correct continuity.
 
 ### Testing User Stories from User Experience (UX)
 #### First Time Visitor Goals
-* The site has a clear 'About' section which provides insight to it's purpose and infrmation that users are looking for.
-* The site has a clear well thought out structure that is familiar to the user and the site itself guides you to each section. All navigation links were also extensively tested to ensure continuity.
-* The site is fully responsive across Desktops, tablets and mobile devices and was tested using Chrome Developer tools on Ipad, Ipad Pro, Iphone 6,7,8 X, Xiaomi F2, Xiamoi F1, Mac pro, MacBook and Safari.    
-![Responsive about section](mdassets/mdimages/responsiveabout.png)
+* The site features an engaging and intriguing command line interface typewrtier function which encourages the user to play along.   
+* The site alerts the user when they have entered a correct guess either via an alert box or by allowing them to proceed. It aslo prints their previous command to the screen. Additionaly it provides a hint with regard to the format of the users answer.
+* The site has a fun 404 page.    
+![Typewriter effect](mdassets/mdimages/responsiveabout.png)
 #### Returning Visitor Goals
-* There is additional information to external resources by way of podcasts and videos. These do not auto play and can be played by the user across all devices and all work correctly.
-* There is a specific 'Contact Us' section located in the footer as well as an email address also. Clicking the email address will open up a users email client and the contact us form has been tested extensively and returns a confirmation page that the form was submiited successfully.
-* All social media links are housed within the footer and have all been tested.    
-![social media icons](mdassets/mdimages/socialcontact.png)
+* The site has a fairly linear structure that guides and prompts the user through each section. All links via functions were also extensively tested to ensure continuity. 
+* The site features a number of Easter eggs. Notably the ability to change themes upon their discovery.
+![Easter Egg](mdassets/mdimages/socialcontact.png)
 #### Frequent User Goals
-*  User's are prompted a number of times to sign-up to the Newsletter which will keep them up to date with podcasts and videos, blog posts, articles and any other relevant information. The Newsletter modal has been tested extensively and returns a confirmation page that the form was submiited successfully.    
-![newsletter sign up](mdassets/mdimages/newslettersignup.png)
+* The site is adequately responsive across Desktops, tablets and mobile devices and was tested using Chrome Developer tools on Ipad, Ipad Pro, Iphone 6,7,8 X, Xiaomi F2, Xiamoi F1, Mac pro, MacBook and Safari.   
+* When time allows, the CV page will be updated with a contact modal.
 
 #### Further Testing
 Lighthouse, a Google Chrome web developement tool, was used extensively on the site in it's entirety. Every individual page was tested for desktop and mobile and received a score of in excess of 90+ across Performance, Accessability, Best Practices and SEO.    
 ![Lighthouse Screenshot](mdassets/mdimages/lighthouseresult.png)    
 A copy of the Lighthouse report for each individual page can be found below:    
 * Index - [Lighthouse Desktop Result](mdassets/pdf/index-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/index-lighthouse-report-mobile.pdf)
-* Builds - [Lighthouse Desktop Result](mdassets/pdf/builds-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/builds-lighthouse-report-mobile.pdf)
-* Podcasts & videos - [Lighthouse Desktop Result](mdassets/pdf/podcasts-and-videos-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/podcasts-and-videos-lighthouse-report-mobile.pdf)
-* Articles - [Lighthouse Desktop Result](mdassets/pdf/articles-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/articles-lighthouse-report-mobile.pdf)
-* Articles Page 2 - [Lighthouse Desktop Result](mdassets/pdf/articles-pg-2-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/articles-pg-2-lighthouse-report-mobile.pdf)
-* Glossary - [Lighthouse Desktop Result](mdassets/pdf/glossary-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/glossary-lighthouse-report-mobile.pdf)
+* CV - [Lighthouse Desktop Result](mdassets/pdf/builds-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/builds-lighthouse-report-mobile.pdf)
 * 404 - [Lighthouse Desktop Result](mdassets/pdf/404-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/404-lighthouse-report-mobile.pdf)
 #### Known Bugs
-* No known bugs.
+* The pixel icon dissappears on one occasion when typing out solve.
 
 ## Deployment
 
@@ -231,7 +214,7 @@ A copy of the Lighthouse report for each individual page can be found below:
 We welcome all contributions. To do so:
 
 1. Fork the Repo.
-2. Log in to GitHub and locate the [Respository](https://github.com/LogisticBravo/Milestone_Project-1-3DPrintQ).
+2. Log in to GitHub and locate the [Respository](https://github.com/LogisticBravo/Milestone_project_2-The-Rabbit-Hole).
 3. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 4. You should now have a copy of the original repository in your GitHub account.	
 5. Create a new branch.
@@ -243,36 +226,35 @@ We welcome all contributions. To do so:
 
 ### Bugs & Feature Requests
 
-Should you find a bug and want to help us squash it. Please open an issue [here](https://github.com/LogisticBravo/Milestone_Project-1-3DPrintQ/issues/new) ensuring you add the '**bug**' label  with clear detail under the following:
+Should you find a bug and want to help us squash it. Please open an issue [here](https://github.com/LogisticBravo/Milestone_project_2-The-Rabbit-Hole/issues/new) ensuring you add the '**bug**' label  with clear detail under the following:
 * What you done?
 * Where you done it?
 * What you expected to happen?
 * What actually happened?
 	
-To request a new feature or function then please open an issue [here](https://github.com/LogisticBravo/Milestone_Project-1-3DPrintQ/issues/new) ensuring you add the '**enhancement**' label  with proposed changes including snippets of how to do so.
+To request a new feature or function then please open an issue [here](https://github.com/LogisticBravo/Milestone_project_2-The-Rabbit-Hole/issues/new) ensuring you add the '**enhancement**' label  with proposed changes including snippets of how to do so.
 
 ## Credits
 
 ### Code
 * Bootstrap4: Bootstrap Library used throughout the project mainly to make site responsive using the Bootstrap Grid System.
 * CSS Styling code and corresponding classes/id’s was that of the developer Jay Bradley.
-* Process to creating slideout footer was taken from this [CSS Tricks Article](https://css-tricks.com/the-slideout-footer/).
-* Inversion of carousel arrow colours css code from this [stackoverflow Article](https://stackoverflow.com/questions/46249541/change-arrow-colors-in-bootstraps-carousel). 
+* Majority of all Javascript written was that of the developer Jay Bradley. Those that were not are attributed below and within the code. 
 
 ### Content
-* Majority of the about content was written by the developer Jay Bradley. As referenced, some is from wikipedia.  
-* All article content in the resources section is copied from, with permission, Prusa Research.  
-* Build guides are used with permission from Prusa research, Caribou3D and Grégoire Saunier.
+* The structure and concept were entirely that of the the developer Jay Bradley. Some riddles were found via a google search. 
+* The CV is a true CV of the developer, Jay Bradley.
+
 
 ### Media
-* The hero image was taken from [Google Images](shorturl.at/zIUZ7)   
-* Various other images are taken from, with permission:  
-* Prusa Research, Caribou 3D and Grégoire Saunier.  
-* The embedded YouTube content is used with permission from Chris Warkocki.
+* The image is that of the developer, Jay Bradley.  
+* ASCII imagery such as that found on the CV and 404 page were typed by the developer, Jay Bradley.
 
 ### Acknowledgements
+* My wife for her continued support as I worked through this.
 * My Mentor, Seun for her great feedback and continously pushing me.
-* [Prusa Research](https://www.prusa3d.com/) for allowing me to use their images and content. 
-* [Caribou 3D](https://caribou3d.com/en/) for allowing me to use their images and content.
-* [Grégoire Saunier](https://github.com/gregsaun) for allowing me to use images.
-* [Chris Warcocki](https://www.youtube.com/c/ChrisWarkocki/videos) for allowing me to embed his content. 
+* Konami for creating great games and the original Konami Code. 
+* [CSS Tricks](https://css-tricks.com/animating-number-counters/) article which formed the animation function for the rolladex of numbers. 
+* [Mastering JS](https://masteringjs.io/tutorials/fundamentals/compare-arrays) article for the function to compare arrays.
+* [Javascript.info](https://javascript.info/task/shuffle) Fischer-Yates algorythm which shuffles the array.
+* [W3 Schools](https://www.w3schools.com/howto/howto_js_typewriter.asp) for the baseline for the typeWriter Effect. 
