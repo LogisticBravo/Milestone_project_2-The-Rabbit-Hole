@@ -47,9 +47,9 @@
     - [Content](#content "Content")  
     - [Media](#media "Media")  
     - [Acknowledgements](#acknowledgements "Acknowledgements")  
-# Milestone Project 1
-![GitHub top language](https://img.shields.io/github/languages/top/LogisticBravo/Milestone_Project-1-3DPrintQ) ![GitHub second language](https://img.shields.io/badge/CSS%20Coverage-3.8%25-yellow) ![GitHub deployments](https://img.shields.io/github/deployments/LogisticBravo/Milestone_Project-1-3DPrintQ/github-pages) ![Bootstrap badge](https://img.shields.io/badge/Bootstrap-V4.5.3-blueviolet) ![Font Awesome badge](https://img.shields.io/badge/FontAwesome-V5.15.1-blue)    
-![GitHub language count](https://img.shields.io/github/languages/count/LogisticBravo/Milestone_Project-1-3DPrintQ) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/LogisticBravo/Milestone_Project-1-3DPrintQ) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/LogisticBravo/Milestone_Project-1-3DPrintQ/master) ![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Flogisticbravo.github.io%2FMilestone_Project-1-3DPrintQ%2F) ![GitHub contributors](https://img.shields.io/github/contributors/LogisticBravo/Milestone_Project-1-3DPrintQ) ![GitHub forks](https://img.shields.io/github/forks/LogisticBravo/Milestone_Project-1-3DPrintQ?style=social)
+# Milestone Project 2
+![GitHub top language](https://img.shields.io/github/languages/top/LogisticBravo/Milestone_project_2-The-Rabbit-Hole) ![GitHub second language](https://img.shields.io/badge/HTML5-44%25-red) ![GitHub deployments](https://img.shields.io/github/deployments/LogisticBravo/Milestone_project_2-The-Rabbit-Hole/github-pages) ![Bootstrap badge](https://img.shields.io/badge/Bootstrap-V4.5.3-blueviolet) ![Font Awesome badge](https://img.shields.io/badge/FontAwesome-V5.15.1-blue)    
+![GitHub language count](https://img.shields.io/github/languages/count/LogisticBravo/Milestone_project_2-The-Rabbit-Hole) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/LogisticBravo/Milestone_project_2-The-Rabbit-Hole) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/LogisticBravo/Milestone_project_2-The-Rabbit-Hole/master) ![GitHub contributors](https://img.shields.io/github/contributors/LogisticBravo/Milestone_project_2-The-Rabbit-Hole) ![GitHub forks](https://img.shields.io/github/forks/LogisticBravo/style=social)
 
 This was created to demonstrate learnings from the Code Institute software development course and marks the second of four milestone projects to be created. It is to showcase HTML, CSS,Javascript and UX by way of an interactive front end website.
 
@@ -84,15 +84,15 @@ A live version of the site can be viewed [here](https://logisticbravo.github.io/
 #### Colour Scheme
 The site uses the following 6 colours primarily.   
 ![image](mdassets/mdimages/colors.png)
-* Blue - 
-* Yellow - 
-* Pink - 
-* Orange - 
-* Green - 
-* Cyan -
-* White - 
+* Blue - rgb(0,150,199) #0096C7
+* Yellow - rgb(255,236,137) #FFEC89
+* Pink - rgb(215,72,148) #D74894
+* Orange - rgb(213,135,71) #D58747
+* Green - rgb(96,155,85) #609B55
+* Cyan - rgb(77,189,174) #4DBDAE
+* White - rgb(255,255,255) #FFFFFF
 
-In places it uses an alternate Green - 
+In places it uses an alternate Green - rgb(3,160,98) #03A062
 #### Typography
 * [The Roboto font](https://fonts.google.com/specimen/Roboto) is used on all elements throughout the site with monospace as a fall back in case of errors in loading the font. Roboto is a clean and stylish popular choice as Androids default font and so fits the target market of those that are more ‘tech’ orientated and gives a modern CLI esque take on the font. 
 * [VT323](https://fonts.google.com/specimen/VT323) is used as an additional theme choice on the CV page and is a fitting nod to many an old school game. 
@@ -110,11 +110,10 @@ Full Wireframes drawn up using Figma can be found [here](https://www.figma.com/f
 * The site uses a rolladex animation on the ASCII numbers before loading the CV page which when locked in turn green.
 * The CV page offers 3 themes.   
 * The site has a key listener in place so as to capture and implement an effect from the correct key strokes being input.
-* The site has a number of "Easter Eggs" throughout.
-* The site provides feedback on the users progress by way of a CLI type effect.
-![Home Page Animation](mdassets/mdimages/indexanimation.gif)    
-
-
+* The site has a number of "Easter Eggs" throughout.    
+   
+![IDE Theme](mdassets/mdimages/idetheme.png)    
+* The site provides feedback on the users progress by way of a CLI type effect. 
 * Custom 404 page should the user navigate to a non-existant link which will automatically be redirected to home.   
 This can be tested [here](https://logisticbravo.github.io/Milestone_project_2-The-Rabbit-Hole/404.html)    
 ![404 page image](mdassets/mdimages/404.png)    
@@ -172,21 +171,22 @@ All links have been extensively tested to ensure correct continuity.
 * The site features an engaging and intriguing command line interface typewrtier function which encourages the user to play along.   
 * The site alerts the user when they have entered a correct guess either via an alert box or by allowing them to proceed. It aslo prints their previous command to the screen. Additionaly it provides a hint with regard to the format of the users answer.
 * The site has a fun 404 page.    
-![Typewriter effect](mdassets/mdimages/responsiveabout.png)
+![Typewriter effect](mdassets/mdimages/typewrite.png)
 #### Returning Visitor Goals
 * The site has a fairly linear structure that guides and prompts the user through each section. All links via functions were also extensively tested to ensure continuity. 
-* The site features a number of Easter eggs. Notably the ability to change themes upon their discovery.
-![Easter Egg](mdassets/mdimages/socialcontact.png)
+* The site features a number of Easter eggs. Notably the ability to change themes upon their discovery.   
+![Easter Egg](mdassets/mdimages/easteregg.png)
 #### Frequent User Goals
 * The site is adequately responsive across Desktops, tablets and mobile devices and was tested using Chrome Developer tools on Ipad, Ipad Pro, Iphone 6,7,8 X, Xiaomi F2, Xiamoi F1, Mac pro, MacBook and Safari.   
-* When time allows, the CV page will be updated with a contact modal.
+* When time allows, the CV page will be updated with a contact modal.    
+![Mobile View](mdassets/mdimages/mobile.png)
 
 #### Further Testing
-Lighthouse, a Google Chrome web developement tool, was used extensively on the site in it's entirety. Every individual page was tested for desktop and mobile and received a score of in excess of 90+ across Performance, Accessability, Best Practices and SEO.    
+Lighthouse, a Google Chrome web developement tool, was used extensively on the site in it's entirety. Every individual page was tested for desktop and mobile and received a score of in excess of 80+ across Performance, Accessability, Best Practices and SEO.    
 ![Lighthouse Screenshot](mdassets/mdimages/lighthouseresult.png)    
 A copy of the Lighthouse report for each individual page can be found below:    
 * Index - [Lighthouse Desktop Result](mdassets/pdf/index-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/index-lighthouse-report-mobile.pdf)
-* CV - [Lighthouse Desktop Result](mdassets/pdf/builds-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/builds-lighthouse-report-mobile.pdf)
+* CV - [Lighthouse Desktop Result](mdassets/pdf/cv-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/cv-lighthouse-report-mobile.pdf)
 * 404 - [Lighthouse Desktop Result](mdassets/pdf/404-lighthouse-report-desktop.pdf) | [Lighthouse Mobile Result](mdassets/pdf/404-lighthouse-report-mobile.pdf)
 #### Known Bugs
 * The pixel icon dissappears on one occasion when typing out solve.
