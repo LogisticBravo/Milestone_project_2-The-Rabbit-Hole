@@ -84,6 +84,10 @@ a {
 
 /********** Responsive Styling **********/
 
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
 .mobile {
     max-height: 40vh;
     overflow-x: scroll;
