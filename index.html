@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
+    <meta name="Description"
+        content="The Rabbit Hole - A CLI themed page built using javascript,HTML and CSS as a project for course work. Contains easter eggs throughout" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <!--******************** bootstrap cdn ********************-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <!--******************** fontawesome import ********************-->
+    <!--******************** css stylesheet import ********************-->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-
+    <!--******************** Jquery import ********************-->
     <title>The Rabbit Hole</title>
 </head>
 
@@ -31,6 +35,7 @@
                 </div>
             </div>
             <div class="container mb-2 mt-5">
+                <!--used to create the cmd line effect of previously typed commands-->
                 <div class="row">
                     <div class="col-sm-3 col-md-6 offset-md-1 mobile">
                         <p id="p1" class="hide cli pt-0 pb-0 mt-0 mb-0">&gt; Would you like to play a game? Y</p>
@@ -72,7 +77,8 @@
             </div>
             <div class="container mt-2 dynamic-center">
                 <div class="row justify-content-md-center">
-                    <div class="col-md-4 offset-1 pb-3" id="central">
+                    <div class="col-md-4 pb-3 smallfont" id="central">
+                        <!--All text lives in data-text so that it can be typed to the screen by the typeWriter function-->
                         <span id="main-content" data-text="Would you like to play a game?"></span>
                         <span id="second" data-text="Enter your name: "></span>
                         <span id="konami" data-text="Have you heard of 'Konami',"></span>
@@ -139,6 +145,7 @@
             </div>
         </section>
     </main>
+    <!--******************** Javascript import ********************-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>

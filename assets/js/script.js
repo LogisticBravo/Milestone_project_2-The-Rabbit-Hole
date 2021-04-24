@@ -16,12 +16,44 @@ function typeWriter(txt, i, divId) {
         }, 70);
     };
 };
-
+// utilises the typewriter function to quicly select and type out elements
 function quickType(spanId, optionalVariable = '', optionalValue = '') {
     var txt = $("#" + spanId).data("text") + optionalVariable + optionalValue;
     typeWriter(txt, 0, spanId);
 }
 
+// types out the main-content id element to screen when the user lands on the page. 
+window.onload =
+    setTimeout(function () {
+        var txt = $("#main-content").data("text");
+        typeWriter(txt, 0, "main-content");
+        counts();
+    }, 3500);
+setTimeout(function () {
+    $("#yes").removeAttr("disabled"); //Disables buttons until typing complete. Used throughout
+    $("#no").removeAttr("disabled");
+}, 5800);
+$(".pixel").removeClass("pixel");
+$("#yes").prop("disabled", true);
+$("#no").prop("disabled", true);
+
+// answers to the riddles - used later to check against
+let riddlesAns = {
+    riddle1: "up",
+    riddle2: "up",
+    riddle3: "down",
+    riddle4: "down",
+    riddle5: "left",
+    riddle6: "right",
+    riddle7: "left",
+    riddle8: "right",
+    riddle9: "b",
+    riddle10: "a",
+}
+//Sets up the answeredRiddles array. Key presses are later pushed to this array.
+let answeredRiddles = [];
+
+//quickly add's and removes classes
 function showHide(show, showTwo, hide, hideTwo) {
     $("#" + show).removeClass("hide").addClass("show");
     $("#" + showTwo).removeClass("hide").addClass("show");
@@ -46,13 +78,14 @@ function remove(scrambled) { //function removes any blank spaces that may be pre
     return shuffledName;
 };
 
+//Changes the id attribute of the confirm button so that a new count can be started based on it's presses later on
 function changeId() {
     if (count === 1 && noCount === 1 && confirmCount === 1) {
         $("button#confirm").attr("id", "confirmRiddle");
         riddleButton = document.getElementById("confirmRiddle");
     }
 }
-
+// Tracks and reacts to the number of incorrect attemps the user has made
 function attempts() {
     if (attempt == 1) {
         attempt--;
@@ -67,7 +100,7 @@ function attempts() {
         alert(`You have ${attempt} remaining attempts\nHint: If answering riddles - use lower case`);
     }
 }
-
+// Later used in the nextRiddle function so as to quickly build out the riddles function. 
 function answerRiddle(riddleId, defaultTime = 7600) {
     $("span").last().addClass("pixel");
     $(`span#${riddleId}`).prev().after('<span id="pass" data-text="Well done. . . Next Riddle:"></span>');
@@ -97,13 +130,12 @@ function answerRiddle(riddleId, defaultTime = 7600) {
         $("#reset").removeAttr("disabled");
     }, defaultTime + 1900);
 }
-
+//Stores all the user answers for the riddles in an array which will be checked later
 function storeAnswers() {
     answers = document.getElementById("answer").value;
     answeredRiddles.push(answers);
-    console.log(answeredRiddles);
 }
-
+//Used to remove the current riddle before the next riddle is typed. Resets users attempts to 3 so that the user starts each riddle with 3 attempts
 function resetRiddles(emptyRiddleId) {
     $("#pass").remove();
     $(`#${emptyRiddleId}`).empty();
@@ -112,13 +144,13 @@ function resetRiddles(emptyRiddleId) {
     $("#answer").remove();
     attempt = 3;
 }
-
+// Combines 3 functions so as to allow for quicker coding of the riddles function
 function nextRiddle(prevRiddleId, nextRiddleId, defaultTime) {
     storeAnswers();
     resetRiddles(prevRiddleId);
     answerRiddle(nextRiddleId, defaultTime);
 }
-
+//types the anagram to the screen which includes the users name which is shuffled by another function and has '2020' within it 
 function anagramSolve() {
     $("#konami").empty();
     var yourNameShuffled = remove(scrambled)
@@ -146,36 +178,7 @@ function anagramSolve() {
         $("#reset").removeAttr("disabled");
     }, 7200);
 }
-
-window.onload =
-    setTimeout(function () {
-        var txt = $("#main-content").data("text");
-        typeWriter(txt, 0, "main-content");
-        counts();
-    }, 3500);
-setTimeout(function () {
-    $("#yes").removeAttr("disabled");
-    $("#no").removeAttr("disabled");
-}, 5800);
-$(".pixel").removeClass("pixel");
-$("#yes").prop("disabled", true);
-$("#no").prop("disabled", true);
-
-let riddlesAns = {
-    riddle1: "up",
-    riddle2: "up",
-    riddle3: "down",
-    riddle4: "down",
-    riddle5: "left",
-    riddle6: "right",
-    riddle7: "left",
-    riddle8: "right",
-    riddle9: "b",
-    riddle10: "a",
-}
-
-let answeredRiddles = [];
-
+//uses a count to determine what action is taken when the button od id yes is clicked
 var button = document.getElementById("yes");
 button.onclick = function () {
     count += 1;
@@ -185,7 +188,7 @@ button.onclick = function () {
         $("#confirm").prop("disabled", true);
         $("#reset").prop("disabled", true);
         quickType("second");
-        showHide("p1");
+        showHide("p1"); //All instances of showHide p'X' are to create the cmd line effect of previously typed answers on the index page
         showHide("confirm", "reset", "yes", "no");
         setTimeout(function () { $("span#second").append('<input type="text" id="name" name="name">'); }, 1500);
         setTimeout(function () { $(".pixel").removeClass("pixel") }, 1500);
@@ -196,9 +199,8 @@ button.onclick = function () {
         }, 1700);
     }
     else { anagramSolve() };
-    console.log(count);
 };
-
+//sets up all the counts that are used in the logic of the script
 function counts() {
     confirmCount = 0;
     riddleCount = 0;
@@ -206,7 +208,7 @@ function counts() {
     count = 0;
     attempt = 3;
 };
-
+//uses a count to determine what action is taken when the button of id no is clicked
 var noButton = document.getElementById("no");
 noButton.onclick = function () {
     noCount += 1;
@@ -220,7 +222,7 @@ noButton.onclick = function () {
         changeId();
         showHide("p5");
         setTimeout(function () {
-            $("span#riddle-1").css("display", "block")//Perhaps I should make this a display block class and use add class
+            $("span#riddle-1").css("display", "block")
         }, 3800);
         setTimeout(function () {
             quickType("solve")
@@ -242,13 +244,12 @@ noButton.onclick = function () {
         };
     }
 }
-
+//empty's the input field for the user
 var resetButton = document.getElementById("reset")
 resetButton.onclick = function () {
     $("#name").val('');
     $("#answer").val('');
 }
-//console.log(scrambled) - debug to check that name was passed to 'scrambled'
 
 function arrayEquals(a, b) { //Compare two arrays to check they are the same (Attributed to: https://masteringjs.io/tutorials/fundamentals/compare-arrays)
     if (Array.isArray(a) &&
@@ -259,12 +260,12 @@ function arrayEquals(a, b) { //Compare two arrays to check they are the same (At
     else { attempts() };
     checkAttempt();
 }
-
+//resets the everything after each incorrect attempt
 function checkAttempt() {
     if (attempt === 2) { answers = {}; answeredRiddles = []; $("#log").empty(); };
     if (attempt === 1) { answers = {}; answeredRiddles = []; $("#log").empty(); };
 }
-
+// listens for and capture key strokes by the user
 function keyListen() {
     setTimeout(function () {
         $("#solve").after('<p id="log"></p>');
@@ -285,11 +286,10 @@ function keyListen() {
                 $("#reset").removeAttr("disabled"); answeredRiddles.length = 10;
             }
             resetButton.onclick = function () { answers = {}; answeredRiddles = []; $("#log").empty(); };
-            console.log(answeredRiddles);
         }
     }, 6000);
 }
-
+//iterates through the array and converts the answers to lowercase
 function checkArray() {
     for (let i = 0; i < answeredRiddles.length; i++) {
         answeredRiddles[i] = answeredRiddles[i].toLowerCase();
@@ -297,29 +297,29 @@ function checkArray() {
     riddlesAns = Object.values(riddlesAns); //converts the objects property values to an array
     arrayEquals(riddlesAns, answeredRiddles); //calls upon the arrayEquals function to ensure that the keyboard input matches the correct riddle answers i.e. the konami code
 }
-function checkInput() {     
-    if($("input").val() == "neo")
-    {$("button").addClass("matrix").removeClass("ide-pink").removeClass("ide-orange");
+//Easter egg
+function checkInput() {
+    if ($("input").val() == "neo") {
+        $("button").addClass("matrix").removeClass("ide-pink").removeClass("ide-orange");
         $("div").addClass("matrix").removeClass("ide-cyan");
         $("a").addClass("matrix").removeClass("ide-yellow");
-        confirmCount -=1;
+        confirmCount -= 1;
         $("#name").val('');
     }
-    else if($("input").val() == "admin")
-    {$("#confirm").addClass("ide-pink").removeClass("matrix");
+    else if ($("input").val() == "admin") {
+        $("#confirm").addClass("ide-pink").removeClass("matrix");
         $("#reset").addClass("ide-orange").removeClass("matrix");
         $("#yes").addClass("ide-pink").removeClass("matrix");
         $("#no").addClass("ide-orange").removeClass("matrix");
         $("div").addClass("ide-cyan").removeClass("matrix");
         $("#solve").addClass("ide-blue").removeClass("matrix");
         $("a").removeClass("matrix").addClass("ide-yellow");
-        confirmCount -=1;
+        confirmCount -= 1;
         $("#name").val('');
     }
-    else if (count === 1 && ($("input").val().length == 0))
-    { alert("Input cannot be Empty!"); confirmCount -= 1; } 
+    else if (count === 1 && ($("input").val().length == 0)) { alert("Input cannot be Empty!"); confirmCount -= 1; }
 }
-
+// determines what path is taken by the user based on the counts of the button clicks
 var confirmButton = document.getElementById("confirm");
 confirmButton.onclick = function () {
     confirmCount += 1;
@@ -361,13 +361,12 @@ confirmButton.onclick = function () {
             mobileKeys();
         }
         else { attempts() };
-        console.log(attempt)
     }
     if (confirmCount >= 2 && count === 3) {
         checkArray();
     }
 };
-
+// Empty's the screen and types out all of the riddles. Uses previously set up functions to capture, check and provide the path for the user to take
 function riddles() {
     riddleCount += 1;
     answer = document.getElementById("answer").value;
@@ -447,7 +446,7 @@ function riddles() {
     }
     else { attempts() };
 }
-
+// If the user travels the path through the riddles, this shows them the answers at the end. It then removes the button
 function kcode() {
     if (riddleCount >= 11 && attempt >= 0) {
         $("button#confirmRiddle").attr("id", "confirm");
@@ -472,7 +471,7 @@ function kcode() {
     }
     else { attempts() };
 }
-
+//When the konami code is entered correctly. The Ascii numbers are shown on screen and animated as each number is locked in. Once locked, the CV page is loaded. The numbers themselves also include an easter egg or two ;-)
 function asciiLoading() {
     $("div div div").empty();
     $("#central").append("<span id='count1' class='pr-5 count-size'>98</span><span id='count2' class='pr-5 count-size'>114</span><span id='count3' class='pr-5 count-size'>97</span><span id='count4' class='pr-5 count-size'>100</span><span id='count5' class='pr-5 count-size'>108</span><span id='count6' class='pr-5 count-size'>101</span><span id='count7' class='pr-5 count-size'>121</span>");
@@ -514,44 +513,43 @@ function asciiLoading() {
     }, 5000);
     setTimeout(function () { window.location.href = "cv.html" }, 20000);
 };
-
-function checkUnlock(){
-     if (answeredRiddles.length === 10) 
-    {
-                $("#confirm").removeAttr("disabled");
-                $("#reset").removeAttr("disabled"); answeredRiddles.length = 10;
+//used by the mobileKeys function to check if the buttons can be activated to submit an attempt. Resets the length of the array. 
+function checkUnlock() {
+    if (answeredRiddles.length === 10) {
+        $("#confirm").removeAttr("disabled");
+        $("#reset").removeAttr("disabled"); answeredRiddles.length = 10;
     }
 }
-
-function mobileKeys () {
+//Provides mobile users with the ability to input the konami code. Pushes each click to the array.
+function mobileKeys() {
     var arrowUpButton = document.getElementById("upkey");
-    arrowUpButton.onclick = function (){
-    answeredRiddles.push("Up");
-    checkUnlock();
+    arrowUpButton.onclick = function () {
+        answeredRiddles.push("Up");
+        checkUnlock();
     }
     var arrowDownButton = document.getElementById("downkey");
-    arrowDownButton.onclick = function (){
-    answeredRiddles.push("Down");
-    checkUnlock();
+    arrowDownButton.onclick = function () {
+        answeredRiddles.push("Down");
+        checkUnlock();
     }
     var arrowLeftButton = document.getElementById("leftkey");
-    arrowLeftButton.onclick = function (){
-    answeredRiddles.push("Left");
-    checkUnlock();
+    arrowLeftButton.onclick = function () {
+        answeredRiddles.push("Left");
+        checkUnlock();
     }
     var arrowRightButton = document.getElementById("rightkey");
-    arrowRightButton.onclick = function (){
-    answeredRiddles.push("Right");
-    checkUnlock();
+    arrowRightButton.onclick = function () {
+        answeredRiddles.push("Right");
+        checkUnlock();
     }
     var aKeyButton = document.getElementById("akey");
-    aKeyButton.onclick = function (){
-    answeredRiddles.push("A");
-    checkUnlock();
+    aKeyButton.onclick = function () {
+        answeredRiddles.push("A");
+        checkUnlock();
     }
     var bKeyButton = document.getElementById("bkey");
-    bKeyButton.onclick = function (){
-    answeredRiddles.push("B");
-    checkUnlock();
+    bKeyButton.onclick = function () {
+        answeredRiddles.push("B");
+        checkUnlock();
     }
 }

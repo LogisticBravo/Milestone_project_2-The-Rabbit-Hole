@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
+/**Google fonts import of Roboto and VT323**/
 body{
     background-color: black;
     color: white;
@@ -78,6 +78,8 @@ a {
     text-decoration: none;
 }
 
+/********** Responsive Styling **********/
+
 .mobile {
     max-height: 40vh;
     overflow-x: scroll;
@@ -91,6 +93,12 @@ a {
     border: dashed;
     margin-left: 2em;
     display: none;
+}
+}
+
+@media only screen and (min-width:812px) {
+.smallfont{
+    font-size: 2em;
 }
 }
 
@@ -127,7 +135,7 @@ tr td:nth-child(3) {
 div p {
     padding: 1rem;
 }
-
+/********** Cursor **********/
 .pixel{
   height: 20px;
   width: 10px;
@@ -139,6 +147,8 @@ div p {
 ul {
     list-style-type: none;
 }
+
+/********** Animations **********/
 
 @keyframes pixel {
   50% {
