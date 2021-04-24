@@ -74,6 +74,10 @@ input {
     font-weight: 200!important;
 }
 
+.red {
+    color: tomato;
+}
+
 a {
     text-decoration: none;
 }
@@ -87,7 +91,7 @@ a {
     height: 40vh;
 }
 
-@media only screen and (min-width:812px) {
+@media only screen and (min-width:1366px) {
 .mobile-only {
     border: white;
     border: dashed;
